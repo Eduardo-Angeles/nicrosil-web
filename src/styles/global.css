@@ -1,1 +1,79 @@
 @import "tailwindcss";
+
+/* Poppins — solo los pesos necesarios */
+@import "@fontsource/poppins/400.css";
+@import "@fontsource/poppins/500.css";
+@import "@fontsource/poppins/600.css";
+@import "@fontsource/poppins/700.css";
+@import "@fontsource/poppins/800.css";
+
+/* Dark mode: activa cuando <html> tiene la clase .dark */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ─── Design Tokens ──────────────────────────────────────────────────── */
+@theme inline {
+  --font-sans:    "Poppins", sans-serif;
+  --font-display: "Poppins", sans-serif;
+  --font-body:    "Poppins", sans-serif;
+
+  --color-brand-bg:      var(--bg);
+  --color-brand-surface: var(--surface);
+  --color-brand-border:  var(--border);
+  --color-brand-text:    var(--text);
+  --color-brand-muted:   var(--muted);
+  --color-brand-spark:   var(--spark);
+}
+
+/* ─── Light theme (default) ─────────────────────────────────────────── */
+:root {
+  color-scheme: light;
+  --bg:      #FAFAFA;
+  --surface: #F4F4F5;
+  --border:  #E4E4E7;
+  --text:    #09090B;
+  --muted:   #71717A;
+  --spark:   #16A34A;
+}
+
+/* ─── Dark theme ────────────────────────────────────────────────────── */
+:root.dark {
+  color-scheme: dark;
+  --bg:      #0A0A0A;
+  --surface: #111111;
+  --border:  #1F1F1F;
+  --text:    #F2F2F2;
+  --muted:   #71717A;
+  --spark:   #22C55E;
+}
+
+/* ─── Base ──────────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Evita que el header fixed tape los títulos al navegar por anclas */
+section[id] {
+  scroll-margin-top: 80px;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Animaciones de entrada ─────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+.animate-fade-up { animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }

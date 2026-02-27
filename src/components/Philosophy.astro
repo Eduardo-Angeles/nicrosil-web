@@ -1,0 +1,96 @@
+---
+const pillars = [
+  {
+    title: "Crecimiento Constante",
+    description:
+      "Mi experiencia en logística me enseñó que un sistema sin optimización muere. Tu sitio recibe mejoras continuas de SEO y rendimiento, siempre.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`,
+  },
+  {
+    title: "Cero Fricción",
+    description:
+      "Tú plasmas tu visión, yo me encargo de la complejidad técnica. No necesitas saber de código para tener una presencia digital de clase mundial.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+  },
+  {
+    title: "Estándares Mundiales",
+    description:
+      "Años trabajando para empresas en USA me obligaron a dominar las mejores prácticas globales de rendimiento y SEO. Eso es lo que aplico en cada proyecto.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20A14.5 14.5 0 0 0 12 2"/><path d="M2 12h20"/></svg>`,
+  },
+];
+---
+
+<section
+  id="filosofia"
+  class="relative overflow-hidden bg-zinc-50 py-24 dark:bg-zinc-900"
+  aria-labelledby="filosofia-heading"
+>
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute right-0 top-1/2 h-[32rem] w-[32rem] -translate-y-1/2 translate-x-1/3 rounded-full bg-green-400/15 blur-3xl dark:bg-green-500/8"
+  ></div>
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
+
+      <!-- Columna izquierda: cita editorial -->
+      <div>
+        <p class="mb-6 text-sm font-semibold uppercase tracking-widest text-green-600 dark:text-green-400">
+          Filosofía
+        </p>
+
+        <!-- Comilla decorativa -->
+        <div
+          aria-hidden="true"
+          class="mb-4 font-display text-8xl font-bold leading-none text-green-500/20 dark:text-green-400/20"
+        >
+          "
+        </div>
+
+        <blockquote>
+          <p
+            id="filosofia-heading"
+            class="font-display text-3xl font-bold leading-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl"
+          >
+            Un proyecto no se termina,<br />
+            <span class="text-green-600 dark:text-green-400">se cultiva.</span>
+          </p>
+          <footer class="mt-6">
+            <p class="text-sm text-zinc-500 dark:text-zinc-400">
+              El principio que guía cada decisión en Nicrosil
+            </p>
+          </footer>
+        </blockquote>
+
+        <!-- Descripción -->
+        <p class="mt-8 text-base leading-relaxed text-zinc-500 dark:text-zinc-400">
+          Un jardín que no se riega muere. Tu presencia digital funciona igual.
+          La diferencia entre un sitio que crece y uno que queda obsoleto es la
+          atención constante, no el lanzamiento inicial.
+        </p>
+      </div>
+
+      <!-- Columna derecha: 3 pilares -->
+      <div class="flex flex-col gap-6">
+        {
+          pillars.map(({ title, description, icon }) => (
+            <div class="flex gap-5 rounded-2xl border border-white/80 bg-white/60 p-6 shadow-sm backdrop-blur-md dark:border-white/5 dark:bg-zinc-950/50">
+              <div class="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-green-50 text-green-600 dark:bg-green-500/10 dark:text-green-400">
+                <Fragment set:html={icon} />
+              </div>
+              <div>
+                <h3 class="mb-1.5 font-bold text-zinc-900 dark:text-zinc-50">
+                  {title}
+                </h3>
+                <p class="text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
+                  {description}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,111 @@
+---
+const credentials = [
+  {
+    label: "Director de Logística",
+    description:
+      "Lideré departamentos completos donde aprendí que la optimización de sistemas no es opcional. Esa disciplina vive en cada sitio que construyo.",
+  },
+  {
+    label: "Sector Bancario",
+    description:
+      "El área administrativa bancaria me exigió precisión y estándares rigurosos. Aplico la misma mentalidad a la seguridad y rendimiento de tus proyectos.",
+  },
+  {
+    label: "Proyectos en USA",
+    description:
+      "Trabajar para empresas estadounidenses significó competir al más alto nivel global de SEO y performance. Esos estándares son mi punto de partida, no mi meta.",
+  },
+];
+---
+
+<section
+  id="nosotros"
+  class="bg-white py-24 dark:bg-zinc-950"
+  aria-labelledby="authority-heading"
+>
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="grid grid-cols-1 gap-16 lg:grid-cols-2">
+
+      <!-- Columna izquierda: texto narrativo -->
+      <div>
+        <p class="mb-3 text-sm font-semibold uppercase tracking-widest text-green-600 dark:text-green-400">
+          Quiénes somos
+        </p>
+        <h2
+          id="authority-heading"
+          class="mb-6 text-4xl font-bold text-zinc-900 dark:text-zinc-50"
+        >
+          La experiencia detrás de cada pixel
+        </h2>
+        <div class="space-y-4 text-base leading-relaxed text-zinc-500 dark:text-zinc-400">
+          <p>
+            Nicrosil nació de una trayectoria poco convencional: de la dirección
+            logística y la banca al desarrollo web. Esa combinación no es un
+            accidente, es la ventaja competitiva que ofrezco a mis clientes.
+          </p>
+          <p>
+            Con <strong class="font-semibold text-zinc-700 dark:text-zinc-300">
+              más de 5 años de experiencia
+            </strong> como desarrollador y el respaldo de haber liderado departamentos
+            de desarrollo completos para empresas en Estados Unidos, entiendo
+            tanto el negocio como la tecnología.
+          </p>
+          <p>
+            Estoy basado en <strong class="font-semibold text-zinc-700 dark:text-zinc-300">
+              Oaxaca, México
+            </strong>, con alcance global y los estándares que el mercado internacional
+            exige.
+          </p>
+        </div>
+
+        <!-- Stat destacado -->
+        <div class="mt-10 inline-flex items-center gap-4 rounded-2xl border border-zinc-200 bg-zinc-50 px-6 py-4 dark:border-zinc-800 dark:bg-zinc-900">
+          <div>
+            <p class="font-display text-3xl font-bold text-zinc-900 dark:text-zinc-50">
+              5+
+            </p>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400">
+              años de experiencia
+            </p>
+          </div>
+          <div class="h-10 w-px bg-zinc-200 dark:bg-zinc-700" aria-hidden="true"></div>
+          <div>
+            <p class="font-display text-3xl font-bold text-green-600 dark:text-green-400">
+              100
+            </p>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400">
+              Lighthouse score
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna derecha: credenciales -->
+      <div class="flex flex-col gap-5">
+        {
+          credentials.map(({ label, description }, i) => (
+            <div class="flex gap-5">
+              <div class="flex flex-col items-center">
+                <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-green-600 font-display text-sm font-bold text-white dark:bg-green-500">
+                  {String(i + 1).padStart(2, "0")}
+                </div>
+                {i < credentials.length - 1 && (
+                  <div class="mt-2 w-px flex-1 bg-zinc-200 dark:bg-zinc-800" aria-hidden="true" />
+                )}
+              </div>
+              <div class="pb-6">
+                <h3 class="mb-1.5 font-bold text-zinc-900 dark:text-zinc-50">
+                  {label}
+                </h3>
+                <p class="text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
+                  {description}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,15 +1,105 @@
 ---
 import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+}
+
+const {
+  title = "Nicrosil | Desarrollo Web de Clase Mundial desde Oaxaca",
+  description = "Agencia de desarrollo web en Oaxaca, México. Sitios Astro de alto rendimiento, SEO técnico y optimización continua. Tu presencia digital, cultivada con precisión.",
+  canonical = Astro.url.href,
+  ogImage = "/NicrosilLogo.png",
+} = Astro.props;
+
+const schemaOrg = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Nicrosil",
+  description:
+    "Agencia de desarrollo web especializada en sitios de alto rendimiento, SEO técnico y optimización continua.",
+  url: "https://nicrosil.com",
+  logo: "https://nicrosil.com/NicrosilLogo.png",
+  image: "https://nicrosil.com/NicrosilLogo.png",
+  telephone: "",
+  email: "",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Oaxaca de Juárez",
+    addressRegion: "Oaxaca",
+    addressCountry: "MX",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 17.0732,
+    longitude: -96.7266,
+  },
+  areaServed: [
+    { "@type": "City", name: "Oaxaca de Juárez" },
+    { "@type": "Country", name: "México" },
+    { "@type": "Place", name: "Worldwide" },
+  ],
+  sameAs: [],
+  priceRange: "$$",
+  openingHours: "Mo-Fr 09:00-18:00",
+};
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Anti-FOUC: aplica .dark antes del primer paint si el usuario lo eligió -->
+    <script is:inline>
+      (function () {
+        if (localStorage.getItem("theme") === "dark") {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
+
+    <!-- SEO primario -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Nicrosil" />
+
+    <!-- Geo SEO (Oaxaca → global) -->
+    <meta name="geo.region" content="MX-OAX" />
+    <meta name="geo.placename" content="Oaxaca de Juárez, Oaxaca, México" />
+    <meta name="geo.position" content="17.0732;-96.7266" />
+    <meta name="ICBM" content="17.0732, -96.7266" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:site_name" content="Nicrosil" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <title>Nicrosil | Desarrollo web al alcance de todos</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <!-- Schema.org JSON-LD -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(schemaOrg)}
+    />
   </head>
   <body>
     <slot />

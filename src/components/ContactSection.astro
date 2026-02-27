@@ -1,0 +1,97 @@
+---
+import Contact from "./Contact.tsx";
+---
+
+<section
+  id="contacto"
+  class="relative overflow-hidden bg-zinc-900 py-24"
+  aria-labelledby="contacto-heading"
+>
+  <!-- Orbs para que el glass tenga contexto -->
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute -left-32 top-0 h-96 w-96 rounded-full bg-green-500/20 blur-3xl"
+  ></div>
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute -bottom-24 right-0 h-80 w-80 rounded-full bg-emerald-400/15 blur-3xl"
+  ></div>
+
+  <div class="relative mx-auto max-w-6xl px-6">
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+
+      <!-- Columna izquierda: copy — glass panel -->
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-md">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-widest text-green-400">
+          Contacto
+        </p>
+        <h2
+          id="contacto-heading"
+          class="mb-5 text-4xl font-bold text-zinc-50"
+        >
+          Planta tu jardín digital hoy
+        </h2>
+        <p class="mb-8 max-w-sm text-base leading-relaxed text-zinc-400">
+          Cuéntame tu proyecto. Sin compromiso, sin tecnicismos. En menos de 24
+          horas tienes mi análisis inicial.
+        </p>
+
+        <!-- Datos de contacto directos -->
+        <div class="flex flex-col gap-4">
+          <a
+            href="mailto:contacto@nicrosil.com"
+            class="inline-flex items-center gap-3 text-sm text-zinc-400 transition-colors hover:text-green-400"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+            contacto@nicrosil.com
+          </a>
+
+          <div class="flex items-center gap-3 text-sm text-zinc-500">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            Oaxaca de Juárez, México
+          </div>
+        </div>
+
+        <!-- Badge de respuesta rápida -->
+        <div class="mt-10 inline-flex items-center gap-2 rounded-full border border-green-500/20 bg-green-500/10 px-4 py-2">
+          <span class="h-1.5 w-1.5 rounded-full bg-green-400" aria-hidden="true"></span>
+          <span class="text-xs text-green-400">Respuesta en menos de 24 h</span>
+        </div>
+      </div>
+
+      <!-- Columna derecha: formulario — glass panel -->
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-md">
+        <Contact client:visible />
+      </div>
+
+    </div>
+  </div>
+</section>

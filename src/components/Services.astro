@@ -1,0 +1,95 @@
+---
+const services = [
+  {
+    badge: "Lighthouse 100",
+    title: "Sitios de Alto Rendimiento",
+    description:
+      "Construidos con Astro para carga instantánea. Performance, SEO y Accesibilidad al máximo nivel. Tu sitio compite al estándar de las mejores empresas del mundo.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
+  },
+  {
+    badge: "Core Web Vitals",
+    title: "SEO Técnico y Local",
+    description:
+      "Posicionamiento orgánico desde Oaxaca hacia el mundo. Structured data, Core Web Vitals y estrategia de keywords para que te encuentren antes que a la competencia.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>`,
+  },
+  {
+    badge: "UI / UX",
+    title: "Identidad Digital",
+    description:
+      "Diseño que refleja la esencia de tu marca. Tipografía, color y layout que comunican quién eres antes de que el usuario lea una sola línea de texto.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,
+  },
+  {
+    badge: "Continuo",
+    title: "El Jardín Digital",
+    description:
+      "Tu sitio no se entrega y se olvida, se cultiva. Monitoreo continuo, mejoras de rendimiento, contenido actualizado y optimización SEO permanente.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 1 1.1 7.14c-1.2.4-2.3.5-3.4.3-.8-2.1-1-4.1-.5-6.4 1.1-.5 2-.7 2.8-1z"/></svg>`,
+  },
+];
+---
+
+<section
+  id="servicios"
+  class="relative overflow-hidden bg-white py-24 dark:bg-zinc-950"
+  aria-labelledby="servicios-heading"
+>
+  <!-- Gradiente de fondo para dar contexto al glass -->
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute -left-32 top-0 h-96 w-96 rounded-full bg-green-500/10 blur-3xl dark:bg-green-500/5"
+  ></div>
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute -right-32 bottom-0 h-80 w-80 rounded-full bg-emerald-400/10 blur-3xl dark:bg-emerald-400/5"
+  ></div>
+  <div class="mx-auto max-w-6xl px-6">
+
+    <!-- Header de sección -->
+    <div class="mb-16">
+      <p class="mb-3 text-sm font-semibold uppercase tracking-widest text-green-600 dark:text-green-400">
+        Servicios
+      </p>
+      <h2
+        id="servicios-heading"
+        class="max-w-xl text-4xl font-bold text-zinc-900 dark:text-zinc-50"
+      >
+        Todo lo que necesita tu presencia digital
+      </h2>
+    </div>
+
+    <!-- Grid de cards -->
+    <div class="relative grid grid-cols-1 gap-6 md:grid-cols-2">
+      {
+        services.map(({ badge, title, description, icon }) => (
+          <article class="group relative overflow-hidden rounded-2xl border border-white/80 bg-white/60 p-8 shadow-sm shadow-zinc-900/5 backdrop-blur-md transition-all hover:border-green-500/40 hover:shadow-md hover:shadow-green-500/5 dark:border-white/5 dark:bg-zinc-900/40 dark:shadow-black/20 dark:hover:border-green-500/30">
+            <!-- Acento izquierdo en hover -->
+            <div
+              aria-hidden="true"
+              class="absolute inset-y-0 left-0 w-0.5 bg-green-500/0 transition-all duration-300 group-hover:bg-green-500 dark:group-hover:bg-green-400"
+            />
+
+            <!-- Ícono + badge -->
+            <div class="mb-5 flex items-center gap-3">
+              <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-green-50 text-green-600 dark:bg-green-500/10 dark:text-green-400">
+                <Fragment set:html={icon} />
+              </div>
+              <span class="rounded-full bg-zinc-100 px-3 py-1 text-xs font-medium text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
+                {badge}
+              </span>
+            </div>
+
+            <h3 class="mb-3 text-xl font-bold text-zinc-900 dark:text-zinc-50">
+              {title}
+            </h3>
+            <p class="text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
+              {description}
+            </p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

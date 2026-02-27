@@ -1,0 +1,86 @@
+---
+const stats = [
+  { value: "5+",   label: "Años de experiencia" },
+  { value: "100",  label: "Lighthouse score"    },
+  { value: "USA",  label: "Estándares aplicados" },
+  { value: "MX",   label: "Oaxaca → Global"      },
+];
+---
+
+<section
+  id="inicio"
+  class="flex flex-col items-center bg-gradient-to-b from-[#D4FAE6] to-[#FAFAFA] px-4 pt-4 pb-0 dark:from-zinc-950 dark:to-zinc-900"
+  aria-label="Inicio"
+>
+
+  <!-- Badge pill — animación 1 -->
+  <div class="animate-fade-up mt-24 flex flex-wrap items-center justify-center gap-2 rounded-full border border-white/80 bg-white/60 px-4 py-1.5 backdrop-blur-sm dark:border-white/10 dark:bg-zinc-800/60">
+    <span class="relative flex h-3 w-3 items-center justify-center" aria-hidden="true">
+      <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+      <span class="relative inline-flex h-2 w-2 rounded-full bg-green-600 dark:bg-green-400"></span>
+    </span>
+    <p class="text-xs font-medium text-zinc-600 dark:text-zinc-400">
+      Desarrollo Web · Oaxaca, México · Alcance Global
+    </p>
+  </div>
+
+  <!-- H1 — animación 2 -->
+  <h1
+    class="animate-fade-up delay-100 mt-8 max-w-2xl text-center text-4xl font-semibold leading-tight tracking-tight text-zinc-800 dark:text-zinc-50 md:text-[3.75rem]/[1.15]"
+  >
+    Tu Web,<br />
+    <span class="bg-gradient-to-r from-green-600 to-emerald-400 bg-clip-text text-transparent dark:from-green-400 dark:to-emerald-300">
+      Cultivada con Precisión.
+    </span>
+  </h1>
+
+  <!-- Subtítulo — animación 3 -->
+  <p
+    class="animate-fade-up delay-200 mt-5 max-w-[580px] text-center text-sm leading-relaxed text-zinc-500 dark:text-zinc-400"
+  >
+    Sitios de alto rendimiento construidos con Astro. SEO técnico, velocidad
+    máxima y una presencia digital que no para de crecer desde Oaxaca hacia el mundo.
+  </p>
+
+  <!-- CTAs — animación 4 -->
+  <div class="animate-fade-up delay-300 mt-10 flex flex-wrap justify-center gap-3">
+    <a
+      href="#servicios"
+      class="rounded-lg bg-green-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-green-600/25 transition-colors hover:bg-green-500 dark:bg-green-500 dark:shadow-green-500/20 dark:hover:bg-green-400"
+    >
+      Ver servicios
+    </a>
+    <a
+      href="#contacto"
+      class="rounded-lg border border-green-400/60 bg-white px-5 py-3 text-sm font-medium text-zinc-600 transition-colors hover:bg-zinc-50 dark:border-green-500/30 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800"
+    >
+      Hablemos →
+    </a>
+  </div>
+
+  <!-- Línea separadora con gradiente verde — animación 5 -->
+  <div
+    aria-hidden="true"
+    class="animate-fade-up delay-400 mt-12 h-px w-full max-w-3xl bg-gradient-to-r from-white/10 via-green-500 to-white/10 dark:via-green-400"
+  ></div>
+
+  <!-- Stats grid — animación 6 -->
+  <div
+    class="animate-fade-up delay-500 grid w-full max-w-3xl grid-cols-2 gap-6 py-12 md:grid-cols-4"
+    role="list"
+  >
+    {
+      stats.map(({ value, label }) => (
+        <div class="flex flex-col items-center gap-1" role="listitem">
+          <p class="text-2xl font-semibold text-zinc-800 dark:text-zinc-50 md:text-3xl">
+            {value}
+          </p>
+          <p class="text-center text-xs text-zinc-500 dark:text-zinc-400">
+            {label}
+          </p>
+        </div>
+      ))
+    }
+  </div>
+
+</section>

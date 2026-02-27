@@ -1,46 +1,110 @@
-# Astro Starter Kit: Basics
+# Nicrosil — Sitio Web Oficial
 
-```sh
-pnpm create astro@latest -- --template basics
+Sitio de presentación corporativa de **Nicrosil**, agencia de desarrollo web basada en Oaxaca, México. Construido con Astro 5, Tailwind CSS v4 y Preact, con foco en rendimiento máximo, SEO técnico y accesibilidad.
+
+---
+
+## Stack
+
+| Tecnología | Versión | Rol |
+|---|---|---|
+| [Astro](https://astro.build) | 5.x | Framework principal, SSG |
+| [Tailwind CSS](https://tailwindcss.com) | 4.x | Estilos (vía plugin Vite, sin config JS) |
+| [Preact](https://preactjs.com) | 10.x | Interactividad mínima (ThemeToggle, Contact) |
+| Syne Variable | — | Tipografía display / headings |
+| Plus Jakarta Sans Variable | — | Tipografía body / UI |
+
+---
+
+## Comandos
+
+```bash
+pnpm dev          # Servidor de desarrollo en localhost:4321
+pnpm build        # Build de producción → ./dist/
+pnpm preview      # Preview del build antes de desplegar
+pnpm astro check  # Type-check de archivos .astro
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-## 🚀 Project Structure
+## Estructura del proyecto
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```
+src/
+├── components/
+│   ├── Header.astro          # Nav sticky con toggle dark/light y hamburger mobile
+│   ├── ThemeToggle.tsx        # Preact — toggle de tema, persiste en localStorage
+│   ├── Hero.astro             # Sección principal, H1 SEO, orbs CSS
+│   ├── Services.astro         # 4 cards de servicios
+│   ├── Philosophy.astro       # "El Jardín Digital" — diferenciador de marca
+│   ├── Authority.astro        # Trayectoria y credenciales
+│   ├── Process.astro          # 4 pasos del proceso de trabajo
+│   ├── ContactSection.astro   # Wrapper de sección de contacto
+│   ├── Contact.tsx            # Preact — formulario con validación client-side
+│   └── Footer.astro           # Siempre dark, nav, ubicación, copyright
+├── layouts/
+│   └── Layout.astro           # Head SEO completo + anti-FOUC + Schema.org
+├── pages/
+│   └── index.astro            # Landing page, ensambla todos los componentes
+└── styles/
+    └── global.css             # Tokens de marca, fuentes, temas light/dark
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+---
 
-## 🧞 Commands
+## Sistema de temas
 
-All commands are run from the root of the project, from a terminal:
+El tema por defecto es **claro**. El usuario puede alternar a oscuro mediante el botón en el header; la preferencia se persiste en `localStorage`.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+La configuración completa vive en `src/styles/global.css`:
+- Variables CSS bajo `:root` (light) y `:root.dark` (dark)
+- Variante `dark:` de Tailwind activada con `@custom-variant dark (&:where(.dark, .dark *))`
+- Script anti-FOUC en `<head>` del Layout para evitar flash en usuarios con dark guardado
 
-## 👀 Want to learn more?
+Para cambiar colores de marca editar las variables en `global.css`:
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```css
+:root {
+  --spark: #16A34A;   /* acento verde — light mode */
+}
+:root.dark {
+  --spark: #22C55E;   /* acento verde — dark mode */
+}
+```
+
+---
+
+## SEO
+
+- **Schema.org** `ProfessionalService` con dirección Oaxaca y `areaServed: worldwide` en `Layout.astro`
+- **Geo meta tags** (`geo.region: MX-OAX`, coordenadas) para SEO local
+- **Open Graph** y **Twitter Card** configurados con props sobreescribibles por página
+- `Layout.astro` acepta props `title`, `description`, `canonical` y `ogImage` para personalizar cada ruta futura
+
+---
+
+## Datos a actualizar antes de producción
+
+Buscar y reemplazar los siguientes placeholders en el proyecto:
+
+| Archivo | Campo | Valor actual |
+|---|---|---|
+| `src/layouts/Layout.astro` | `url` en Schema.org | `https://nicrosil.com` |
+| `src/layouts/Layout.astro` | `email` en Schema.org | vacío |
+| `src/layouts/Layout.astro` | `telephone` en Schema.org | vacío |
+| `src/components/ContactSection.astro` | Email visible | `contacto@nicrosil.com` |
+| `src/components/Contact.tsx` | `mailto:` destino | `contacto@nicrosil.com` |
+| `src/layouts/Layout.astro` | `sameAs` (redes sociales) | array vacío |
+
+---
+
+## Pendiente
+
+- [ ] **`robots.txt`** — agregar en `/public/robots.txt`
+- [ ] **Sitemap** — instalar `@astrojs/sitemap` y configurar en `astro.config.mjs`
+- [ ] **Dominio y deploy** — configurar `site` en `astro.config.mjs` con la URL final
+- [ ] **Redes sociales** — completar array `sameAs` en Schema.org del Layout
+- [ ] **Datos de contacto reales** — email, teléfono/WhatsApp
+- [ ] **OG Image** — crear imagen 1200×630 px para compartir en redes
+- [ ] **Google Search Console** — verificación y envío del sitemap
+- [ ] **Analytics** — integrar Umami, Plausible o similar (privacy-first)

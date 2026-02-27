@@ -1,0 +1,83 @@
+---
+const steps = [
+  {
+    number: "01",
+    title: "Diagnóstico",
+    description:
+      "Entiendo tu negocio, tu audiencia y tus objetivos. Definimos el mapa del proyecto antes de escribir una sola línea de código.",
+  },
+  {
+    number: "02",
+    title: "Diseño",
+    description:
+      "Wireframes y diseño visual que refleja tu identidad. Apruebas cada decisión antes de pasar al desarrollo.",
+  },
+  {
+    number: "03",
+    title: "Desarrollo",
+    description:
+      "Construcción con Astro, Tailwind y las mejores prácticas de rendimiento, SEO y accesibilidad. Código limpio, sitio veloz.",
+  },
+  {
+    number: "04",
+    title: "Cultivo",
+    description:
+      "El lanzamiento es el inicio, no el final. Monitoreo, optimización continua y mejoras que mantienen tu jardín digital creciendo.",
+  },
+];
+---
+
+<section
+  id="proceso"
+  class="bg-zinc-50 py-24 dark:bg-zinc-900"
+  aria-labelledby="proceso-heading"
+>
+  <div class="mx-auto max-w-6xl px-6">
+
+    <!-- Header -->
+    <div class="mb-16">
+      <p class="mb-3 text-sm font-semibold uppercase tracking-widest text-green-600 dark:text-green-400">
+        Proceso
+      </p>
+      <h2
+        id="proceso-heading"
+        class="max-w-md text-4xl font-bold text-zinc-900 dark:text-zinc-50"
+      >
+        Cómo cultivamos tu presencia digital
+      </h2>
+    </div>
+
+    <!-- Steps — horizontal en desktop, vertical en mobile -->
+    <ol class="grid grid-cols-1 gap-8 md:grid-cols-4 md:gap-6">
+      {
+        steps.map(({ number, title, description }, i) => (
+          <li class="relative flex flex-col">
+
+            <!-- Línea conectora (solo desktop, entre pasos) -->
+            {i < steps.length - 1 && (
+              <div
+                aria-hidden="true"
+                class="absolute left-10 top-5 hidden h-px w-[calc(100%+1.5rem)] bg-zinc-200 dark:bg-zinc-800 md:block"
+              />
+            )}
+
+            <!-- Número -->
+            <div class="relative mb-5 flex h-10 w-10 items-center justify-center rounded-full border-2 border-green-500 bg-white dark:bg-zinc-900">
+              <span class="font-display text-xs font-bold text-green-600 dark:text-green-400">
+                {number}
+              </span>
+            </div>
+
+            <h3 class="mb-2 text-lg font-bold text-zinc-900 dark:text-zinc-50">
+              {title}
+            </h3>
+            <p class="text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
+              {description}
+            </p>
+          </li>
+        ))
+      }
+    </ol>
+
+  </div>
+</section>

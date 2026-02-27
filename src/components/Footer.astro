@@ -1,0 +1,55 @@
+---
+const year = new Date().getFullYear();
+
+const links = [
+  { href: "#servicios", label: "Servicios" },
+  { href: "#filosofia", label: "Filosofía" },
+  { href: "#proceso", label: "Proceso" },
+  { href: "#contacto", label: "Contacto" },
+];
+---
+
+<footer class="border-t border-zinc-800 bg-zinc-950 py-10">
+  <div
+    class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 sm:flex-row"
+  >
+
+    <!-- Logo + ubicación -->
+    <div>
+      <a
+        href="/"
+        class="font-display text-lg font-bold text-zinc-50"
+        aria-label="Nicrosil — Inicio"
+      >
+        Nicrosil
+      </a>
+      <p class="mt-1 text-xs text-zinc-500">
+        Oaxaca, México &mdash; Alcance Global
+      </p>
+    </div>
+
+    <!-- Nav -->
+    <nav aria-label="Pie de página">
+      <ul class="flex flex-wrap justify-center gap-6" role="list">
+        {
+          links.map(({ href, label }) => (
+            <li>
+              <a
+                href={href}
+                class="text-sm text-zinc-400 transition-colors hover:text-zinc-50"
+              >
+                {label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <!-- Copyright -->
+    <p class="text-xs text-zinc-600">
+      &copy; {year} Nicrosil
+    </p>
+
+  </div>
+</footer>
