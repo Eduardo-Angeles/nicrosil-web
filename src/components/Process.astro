@@ -29,9 +29,17 @@ const steps = [
 
 <section
   id="proceso"
-  class="bg-zinc-50 py-24 dark:bg-zinc-900"
+  class="relative overflow-hidden bg-[#EBF6EF] py-24 dark:bg-[#0C1610]"
   aria-labelledby="proceso-heading"
 >
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute left-1/2 top-0 h-72 w-[40rem] -translate-x-1/2 rounded-full bg-green-400/10 blur-3xl dark:bg-green-500/12"
+  ></div>
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute -right-16 bottom-0 h-64 w-64 rounded-full bg-emerald-400/10 blur-3xl dark:bg-emerald-400/8"
+  ></div>
   <div class="mx-auto max-w-6xl px-6">
 
     <!-- Header -->
@@ -62,7 +70,7 @@ const steps = [
             )}
 
             <!-- Número -->
-            <div class="relative mb-5 flex h-10 w-10 items-center justify-center rounded-full border-2 border-green-500 bg-white dark:bg-zinc-900">
+            <div class="relative mb-5 flex h-10 w-10 items-center justify-center rounded-full border-2 border-green-500 bg-[#EBF6EF] dark:bg-[#0C1610]">
               <span class="font-display text-xs font-bold text-green-600 dark:text-green-400">
                 {number}
               </span>

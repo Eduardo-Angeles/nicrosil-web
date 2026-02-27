@@ -1,0 +1,159 @@
+---
+/**
+ * Para agregar un proyecto:
+ * 1. Añade la imagen a /public/ (webp recomendado, ~850×800 px)
+ * 2. Agrega un objeto al array con src, alt, label y category
+ * El timing de la animación se recalcula automáticamente.
+ */
+const projects = [
+  {
+    src:      "/web1.webp",
+    alt:      "Trasciende Gym — sitio web desarrollado por Nicrosil",
+    label:    "Trasciende Gym",
+    category: "Gym & Fitness",
+  },
+  {
+    src:      "/web2.webp",
+    alt:      "Magical Cleaning — sitio web desarrollado por Nicrosil",
+    label:    "Magical Cleaning",
+    category: "Limpieza Profesional",
+  },
+];
+
+const N   = projects.length;
+const dur = 3;        // segundos por slide
+const cyc = N * dur;  // duración total del ciclo
+
+// ── Imágenes: crossfade suave ─────────────────────────────────────────
+const iV = Math.round((1 / N) * 82);           // visible hasta %
+const iF = Math.round((1 / N) * 100);          // fade completo %
+const iH = Math.round(((N - 1) / N) * 100);   // oculto hasta %
+
+// ── Captions y dots: corte instantáneo (sin solapamiento) ────────────
+// Cada slide ocupa exactamente 100/N % del ciclo.
+// La transición ocupa solo 1% → imperceptible (~0.06s en ciclo de 6s)
+const cV = Math.floor(100 / N) - 1;  // visible hasta %  (N=2 → 49, N=3 → 32)
+const cH = Math.floor(100 / N);      // oculto desde %   (N=2 → 50, N=3 → 33)
+
+const css = `
+  /* Imágenes — crossfade suave */
+  @keyframes psImg {
+    0%,  ${iV}%          { opacity: 1; }
+    ${iF}%, ${iH}%       { opacity: 0; }
+    100%                  { opacity: 1; }
+  }
+
+  /* Captions — corte instantáneo, sin superposición de texto */
+  @keyframes psCap {
+    0%,  ${cV}%  { opacity: 1; }
+    ${cH}%, 100% { opacity: 0; }
+  }
+
+  /* Dots — corte instantáneo, sin doble activo */
+  @keyframes psDotOn {
+    0%,  ${cV}%  { width: 1.5rem;   opacity: 1;   }
+    ${cH}%, 100% { width: .375rem;  opacity: .3;  }
+  }
+  @keyframes psDotOff {
+    0%,  ${cV}%  { width: .375rem;  opacity: .3;  }
+    ${cH}%, 100% { width: 1.5rem;   opacity: 1;   }
+  }
+
+  ${projects.map((_, i) => `
+    .ps-img-${i} {
+      opacity: ${i === 0 ? 1 : 0};
+      will-change: opacity;
+      animation: psImg ${cyc}s ease-in-out infinite ${i * dur}s;
+    }
+    .ps-cap-${i} {
+      opacity: ${i === 0 ? 1 : 0};
+      animation: psCap ${cyc}s linear infinite ${i * dur}s;
+    }
+    .ps-dot-${i} {
+      animation: ${i === 0 ? "psDotOn" : "psDotOff"} ${cyc}s linear infinite ${i * dur}s;
+    }
+  `).join("")}
+`;
+---
+
+<section
+  id="portfolio"
+  class="relative overflow-hidden bg-[#F6FCF8] py-24 dark:bg-[#070B09]"
+  aria-labelledby="portfolio-heading"
+>
+  <!-- Orbs — dan contexto de color al efecto de cristal -->
+  <div aria-hidden="true" class="pointer-events-none absolute -left-28 top-16 h-80 w-80 rounded-full bg-green-400/35 blur-3xl dark:bg-green-500/20"></div>
+  <div aria-hidden="true" class="pointer-events-none absolute -right-28 bottom-16 h-80 w-80 rounded-full bg-emerald-300/30 blur-3xl dark:bg-emerald-400/15"></div>
+  <div aria-hidden="true" class="pointer-events-none absolute left-1/2 top-1/2 h-60 w-60 -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal-300/20 blur-2xl dark:bg-teal-500/10"></div>
+
+  <div class="relative mx-auto max-w-3xl px-6">
+
+    <!-- Header -->
+    <div class="mb-10 text-center">
+      <p class="mb-3 text-sm font-semibold uppercase tracking-widest text-green-600 dark:text-green-400">
+        Portfolio
+      </p>
+      <h2
+        id="portfolio-heading"
+        class="mb-3 text-4xl font-bold text-zinc-900 dark:text-zinc-50"
+      >
+        Proyectos en producción
+      </h2>
+      <p class="mx-auto max-w-md text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
+        Sitios activos con rendimiento real. Así se ve el trabajo cuando se cultiva con cuidado.
+      </p>
+    </div>
+
+    <!-- Marco de cristal -->
+    <div
+      class="relative overflow-hidden rounded-3xl border border-white/50 bg-white/20 p-2 backdrop-blur-md dark:border-white/10 dark:bg-white/5"
+      style="box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 30px 60px -12px rgba(0,0,0,0.12);"
+    >
+      <div
+        class="relative aspect-[847/804] overflow-hidden rounded-2xl"
+        role="img"
+        aria-label="Portfolio de proyectos Nicrosil"
+      >
+        {projects.map((p, i) => (
+          <img
+            src={p.src}
+            alt={p.alt}
+            width="847"
+            height="804"
+            loading={i === 0 ? "eager" : "lazy"}
+            decoding="async"
+            class={`ps-img-${i} absolute inset-0 h-full w-full object-cover`}
+          />
+        ))}
+      </div>
+    </div>
+
+    <!-- Dots: cada uno dentro de un wrapper de ancho fijo → sin reflow en el flex -->
+    <div class="mt-5 flex items-center justify-center gap-2">
+      {projects.map((_, i) => (
+        <div class="flex h-1.5 w-6 items-center justify-center">
+          <span
+            class={`ps-dot-${i} h-1.5 rounded-full bg-green-500 dark:bg-green-400`}
+            style={i === 0 ? "width:1.5rem;opacity:1;" : "width:.375rem;opacity:.3;"}
+            aria-hidden="true"
+          />
+        </div>
+      ))}
+    </div>
+
+    <!-- Captions: posición absoluta, corte instantáneo → sin superposición -->
+    <div class="relative mt-2.5 h-5 text-center">
+      {projects.map((p, i) => (
+        <span
+          class={`ps-cap-${i} absolute inset-0 text-xs font-medium text-zinc-500 dark:text-zinc-400`}
+          style={`opacity:${i === 0 ? 1 : 0};`}
+        >
+          {p.label}<span class="mx-1.5 opacity-40" aria-hidden="true">·</span>{p.category}
+        </span>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<Fragment set:html={`<style>${css}</style>`} />

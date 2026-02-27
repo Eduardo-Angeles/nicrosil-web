@@ -1,0 +1,62 @@
+---
+import { CountUp } from "@components/ui/CountUp.tsx";
+---
+
+<section
+  aria-label="Métricas de confianza"
+  class="bg-[#F4FCF6] dark:bg-[#070B09]"
+>
+  <!-- Separador superior — gradiente verde, mismo que terminaba el Hero -->
+  <div class="mx-auto max-w-3xl px-4">
+    <div
+      aria-hidden="true"
+      class="h-px w-full bg-gradient-to-r from-transparent via-green-500 to-transparent dark:via-green-400"
+    ></div>
+  </div>
+
+  <!-- Grid de métricas -->
+  <div
+    class="mx-auto grid w-full max-w-3xl grid-cols-2 gap-y-8 gap-x-4 px-4 py-12 md:grid-cols-4"
+    role="list"
+  >
+    <!-- +5 años -->
+    <div class="flex flex-col items-center gap-1.5 text-center" role="listitem">
+      <p class="font-display text-3xl font-bold tabular-nums text-zinc-800 dark:text-zinc-50 md:text-4xl">
+        +<CountUp client:visible initial={0} final={5} duration={1200} />
+      </p>
+      <p class="text-xs font-semibold uppercase tracking-widest text-green-600 dark:text-green-400">
+        Años de experiencia
+      </p>
+    </div>
+
+    <!-- 100 Lighthouse -->
+    <div class="flex flex-col items-center gap-1.5 text-center" role="listitem">
+      <p class="font-display text-3xl font-bold tabular-nums text-zinc-800 dark:text-zinc-50 md:text-4xl">
+        <CountUp client:visible initial={0} final={100} duration={1400} />
+      </p>
+      <p class="text-xs font-semibold uppercase tracking-widest text-green-600 dark:text-green-400">
+        Lighthouse score
+      </p>
+    </div>
+
+    <!-- USA — string, sin animación numérica -->
+    <div class="flex flex-col items-center gap-1.5 text-center" role="listitem">
+      <p class="font-display text-3xl font-bold text-zinc-800 dark:text-zinc-50 md:text-4xl">
+        USA
+      </p>
+      <p class="text-xs font-semibold uppercase tracking-widest text-green-600 dark:text-green-400">
+        Estándares aplicados
+      </p>
+    </div>
+
+    <!-- MX — string, sin animación numérica -->
+    <div class="flex flex-col items-center gap-1.5 text-center" role="listitem">
+      <p class="font-display text-3xl font-bold text-zinc-800 dark:text-zinc-50 md:text-4xl">
+        MX
+      </p>
+      <p class="text-xs font-semibold uppercase tracking-widest text-green-600 dark:text-green-400">
+        Oaxaca → Global
+      </p>
+    </div>
+  </div>
+</section>

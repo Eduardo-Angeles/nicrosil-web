@@ -1,15 +1,25 @@
 ---
-const stats = [
-  { value: "5+",   label: "Años de experiencia" },
-  { value: "100",  label: "Lighthouse score"    },
-  { value: "USA",  label: "Estándares aplicados" },
-  { value: "MX",   label: "Oaxaca → Global"      },
+import HeroSlider from "@components/HeroSlider.tsx";
+
+const slides = [
+  {
+    src:      "/web1.webp",
+    alt:      "Trasciende Gym — sitio web desarrollado por Nicrosil",
+    label:    "Trasciende Gym",
+    category: "Gym & Fitness",
+  },
+  {
+    src:      "/web2.webp",
+    alt:      "Magical Cleaning — sitio web desarrollado por Nicrosil",
+    label:    "Magical Cleaning",
+    category: "Limpieza Profesional",
+  },
 ];
 ---
 
 <section
   id="inicio"
-  class="flex flex-col items-center bg-gradient-to-b from-[#D4FAE6] to-[#FAFAFA] px-4 pt-4 pb-0 dark:from-zinc-950 dark:to-zinc-900"
+  class="flex flex-col items-center bg-gradient-to-b from-[#C2F5D8] to-[#F4FCF6] px-4 pt-4 pb-24 dark:from-[#0D2015] dark:to-[#070B09]"
   aria-label="Inicio"
 >
 
@@ -58,29 +68,18 @@ const stats = [
     </a>
   </div>
 
-  <!-- Línea separadora con gradiente verde — animación 5 -->
-  <div
-    aria-hidden="true"
-    class="animate-fade-up delay-400 mt-12 h-px w-full max-w-3xl bg-gradient-to-r from-white/10 via-green-500 to-white/10 dark:via-green-400"
-  ></div>
+  <!-- Slider de portfolio — animación 5 -->
+  <div class="animate-fade-up delay-400 mt-14 w-full max-w-2xl">
 
-  <!-- Stats grid — animación 6 -->
-  <div
-    class="animate-fade-up delay-500 grid w-full max-w-3xl grid-cols-2 gap-6 py-12 md:grid-cols-4"
-    role="list"
-  >
-    {
-      stats.map(({ value, label }) => (
-        <div class="flex flex-col items-center gap-1" role="listitem">
-          <p class="text-2xl font-semibold text-zinc-800 dark:text-zinc-50 md:text-3xl">
-            {value}
-          </p>
-          <p class="text-center text-xs text-zinc-500 dark:text-zinc-400">
-            {label}
-          </p>
-        </div>
-      ))
-    }
+    <!-- Label: mismo estilo pill que el badge superior -->
+    <div class="mb-5 flex justify-center">
+      <span class="rounded-full border border-white/70 bg-white/50 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-zinc-500 backdrop-blur-sm dark:border-white/10 dark:bg-zinc-800/50 dark:text-zinc-400">
+        Trabajos recientes
+      </span>
+    </div>
+
+    <HeroSlider slides={slides} client:load />
+
   </div>
 
 </section>

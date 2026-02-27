@@ -20,9 +20,17 @@ const credentials = [
 
 <section
   id="nosotros"
-  class="bg-white py-24 dark:bg-zinc-950"
+  class="relative overflow-hidden bg-[#F6FCF8] py-24 dark:bg-[#070B09]"
   aria-labelledby="authority-heading"
 >
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute -right-24 top-0 h-80 w-80 rounded-full bg-green-400/12 blur-3xl dark:bg-green-500/10"
+  ></div>
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute -left-20 bottom-0 h-72 w-72 rounded-full bg-emerald-500/10 blur-3xl dark:bg-emerald-400/8"
+  ></div>
   <div class="mx-auto max-w-6xl px-6">
     <div class="grid grid-cols-1 gap-16 lg:grid-cols-2">
 
@@ -59,7 +67,7 @@ const credentials = [
         </div>
 
         <!-- Stat destacado -->
-        <div class="mt-10 inline-flex items-center gap-4 rounded-2xl border border-zinc-200 bg-zinc-50 px-6 py-4 dark:border-zinc-800 dark:bg-zinc-900">
+        <div class="mt-10 inline-flex items-center gap-4 rounded-2xl border border-green-200/60 bg-[#DFF3E6] px-6 py-4 dark:border-green-900/40 dark:bg-[#0F1F14]">
           <div>
             <p class="font-display text-3xl font-bold text-zinc-900 dark:text-zinc-50">
               5+
