@@ -1,21 +1,21 @@
 import { useState, useEffect } from "preact/hooks";
 
 type Slide = {
-  src:      string;
-  alt:      string;
-  label:    string;
+  src: string;
+  alt: string;
+  label: string;
   category: string;
 };
 
 export default function HeroSlider({ slides }: { slides: Slide[] }) {
-  const [current, setCurrent]   = useState(0);
-  const [paused,  setPaused]    = useState(false);
+  const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
 
   // Avanza automáticamente cada 3 s; se pausa al hacer hover
   useEffect(() => {
     if (paused) return;
     const id = setInterval(
-      () => setCurrent(c => (c + 1) % slides.length),
+      () => setCurrent((c) => (c + 1) % slides.length),
       3000,
     );
     return () => clearInterval(id);
@@ -28,7 +28,7 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
       onMouseLeave={() => setPaused(false)}
     >
       {/* Contenedor de imágenes */}
-      <div class="relative aspect-[847/804] overflow-hidden rounded-2xl shadow-[0_24px_48px_-12px_rgba(0,0,0,0.14)] ring-1 ring-zinc-900/6 dark:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.55)] dark:ring-white/6">
+      <div class="relative aspect-847/700 overflow-hidden rounded-2xl shadow-[0_24px_48px_-12px_rgba(0,0,0,0.14)] ring-1 ring-zinc-900/6 dark:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.55)] dark:ring-white/6">
         {slides.map((slide, i) => (
           <img
             key={slide.src}
@@ -39,7 +39,7 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
             loading={i === 0 ? "eager" : "lazy"}
             decoding="async"
             class={[
-              "absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-in-out",
+              "absolute inset-0 h-full w-full object-contain transition-opacity duration-700 ease-in-out",
               i === current ? "opacity-100" : "opacity-0",
             ].join(" ")}
           />
@@ -66,7 +66,9 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
       {/* Caption — render directo desde estado, sin animación CSS */}
       <p class="mt-2 text-center text-xs font-medium text-zinc-500 dark:text-zinc-400">
         {slides[current].label}
-        <span class="mx-1.5 opacity-40" aria-hidden="true">·</span>
+        <span class="mx-1.5 opacity-40" aria-hidden="true">
+          ·
+        </span>
         {slides[current].category}
       </p>
     </div>

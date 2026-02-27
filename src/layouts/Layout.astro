@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import Fondo from "@components/Fondo.astro";
 
 interface Props {
   title?: string;
@@ -96,12 +97,22 @@ const schemaOrg = {
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
     <!-- Schema.org JSON-LD -->
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify(schemaOrg)}
-    />
+    <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
   </head>
   <body>
     <slot />
+
+    <!-- Fondo decorativo — va después del slot para quedar encima de las secciones -->
+    <!-- pointer-events-none evita que interfiera con clicks -->
+    <div
+      aria-hidden="true"
+      class="pointer-events-none fixed inset-0 overflow-hidden"
+    >
+      <div
+        class="absolute bottom-0 left-1/2 w-full max-w-xs -translate-x-1/2 opacity-[0.06] sm:max-w-xl sm:opacity-[0.10] lg:max-w-3xl lg:opacity-[0.14]"
+      >
+        <Fondo />
+      </div>
+    </div>
   </body>
 </html>
