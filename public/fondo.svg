@@ -1,0 +1,271 @@
+<svg 
+  viewBox="0 0 600 1100" 
+  fill="none" 
+  xmlns="http://www.w3.org/2000/svg" 
+  class="w-full h-auto max-w-3xl mx-auto"
+  role="img"
+>
+  <title>Jardín Cibernético Fractal - Nivel Premium</title>
+  
+  <defs>
+    <!-- FILTROS Y EFECTOS -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <linearGradient id="vineGrad" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#059669" /> <!-- emerald-600 -->
+      <stop offset="50%" stop-color="#10b981" /> <!-- emerald-500 -->
+      <stop offset="100%" stop-color="#34d399" /> <!-- emerald-400 -->
+    </linearGradient>
+
+    <!-- 1. COMPONENTES GEOMÉTRICOS BASE -->
+    <polygon id="hex" points="0,-25 21.65,-12.5 21.65,12.5 0,25 -21.65,12.5 -21.65,-12.5" fill="none" />
+    <polygon id="hex-filled" points="0,-25 21.65,-12.5 21.65,12.5 0,25 -21.65,12.5 -21.65,-12.5" fill="currentColor" />
+    
+    <g id="hex-node">
+      <use href="#hex" stroke-width="1.5" class="text-emerald-500/40" stroke="currentColor" />
+      <use href="#hex" transform="scale(0.7)" stroke-width="0.75" class="text-emerald-400/60" stroke="currentColor" />
+      <!-- Núcleo de energía -->
+      <circle cx="0" cy="0" r="4" class="text-emerald-300" fill="currentColor" filter="url(#glow)"/>
+      <circle cx="0" cy="0" r="1.5" class="text-white" fill="currentColor" />
+      <!-- Conectores del nodo -->
+      <path d="M0,-17 L0,-25 M15,-8 L21.65,-12.5 M15,8 L21.65,12.5 M0,17 L0,25 M-15,8 L-21.65,12.5 M-15,-8 L-21.65,-12.5" stroke="currentColor" stroke-width="0.5" class="text-emerald-400/50"/>
+    </g>
+
+    <!-- 2. COMPONENTES BOTÁNICOS DETALLADOS -->
+    <g id="main-leaf">
+      <path d="M0,0 C20,-20 50,-25 70,-5 C40,15 15,10 0,0 Z" fill="currentColor" class="text-emerald-950/60" />
+      <path d="M0,0 C20,-20 50,-25 70,-5 C40,15 15,10 0,0 Z" stroke="currentColor" stroke-width="1.5" class="text-emerald-400/80" />
+      <!-- Circuito interno de la hoja -->
+      <path d="M0,0 Q35,-5 70,-5" stroke="currentColor" stroke-width="1" class="text-emerald-400/80" />
+      <path d="M15,-2 L25,-12 M30,-4 L35,-15 M45,-4 L52,-10 M20,2 L30,12 M35,0 L45,8" stroke="currentColor" stroke-width="0.5" class="text-emerald-400/50" />
+      <circle cx="70" cy="-5" r="1.5" fill="currentColor" class="text-emerald-300" filter="url(#glow)"/>
+    </g>
+
+    <!-- 3. NODOS IZQUIERDOS (Suculentas Geométricas) -->
+    <g id="succulent" stroke="currentColor" class="text-emerald-400" stroke-linejoin="round">
+      <path d="M0,15 L-25,-10 L-15,-25 Z" stroke-width="1" fill="#022c22" fill-opacity="0.9"/>
+      <path d="M0,15 L25,-10 L15,-25 Z" stroke-width="1" fill="#022c22" fill-opacity="0.9"/>
+      <path d="M0,15 L-35,0 L-20,-15 Z" stroke-width="1.2" fill="#064e3b" fill-opacity="0.95"/>
+      <path d="M0,15 L35,0 L20,-15 Z" stroke-width="1.2" fill="#064e3b" fill-opacity="0.95"/>
+      <path d="M0,20 L-15,-5 L0,-35 L15,-5 Z" stroke-width="1.5" fill="#064e3b"/>
+      <path d="M0,-35 L0,20 M-15,-5 L0,-10 M15,-5 L0,-10" stroke-width="0.75" class="text-emerald-300/70"/>
+    </g>
+
+    <!-- 4. NODOS DERECHOS (Cristales Cúbicos/Hexagonales) -->
+    <g id="crystal" stroke="currentColor" class="text-emerald-400" stroke-linejoin="round">
+      <path d="M0,-35 L25,-15 L30,15 L0,35 L-30,15 L-25,-15 Z" stroke-width="1.5" fill="#022c22" fill-opacity="0.7"/>
+      <path d="M0,-35 L0,0 L30,15 M0,0 L-30,15 M0,0 L0,35" stroke-width="1" class="text-emerald-300/80"/>
+      <path d="M-25,-15 L0,0 L25,-15" stroke-width="0.75" class="text-emerald-300/60"/>
+      <polygon points="-10,-10 10,-10 0,15" stroke-width="0.5" class="text-emerald-300/40" fill="currentColor" fill-opacity="0.1"/>
+      <!-- Brillo en la punta -->
+      <circle cx="0" cy="-35" r="2" fill="currentColor" class="text-white/80" filter="url(#glow)"/>
+    </g>
+
+    <!-- 5. MICRO-GEOMETRÍA (Polen Digital) -->
+    <g id="micro-dot">
+      <rect x="-1.5" y="-1.5" width="3" height="3" transform="rotate(45)" fill="currentColor" class="text-emerald-300"/>
+    </g>
+  </defs>
+
+  <!-- ========================================== -->
+  <!-- CAPA 1: BACKGROUND GRID Y PROFUNDIDAD      -->
+  <!-- ========================================== -->
+  <g class="text-emerald-500/10" stroke="currentColor" stroke-width="0.5">
+    <!-- Una malla más extensa y tenue al fondo -->
+    <path d="M0,100 L600,100 M0,200 L600,200 M0,300 L600,300 M0,400 L600,400 M0,500 L600,500 M0,600 L600,600 M0,700 L600,700 M0,800 L600,800 M0,900 L600,900" stroke-dasharray="2 10" />
+    <path d="M100,0 L100,1100 M200,0 L200,1100 M300,0 L300,1100 M400,0 L400,1100 M500,0 L500,1100" stroke-dasharray="2 10" />
+    
+    <!-- Hexágonos fantasmas (desenfocados visualmente por baja opacidad) -->
+    <use href="#hex" x="200" y="200" transform="scale(1.5)" class="text-emerald-500/5" />
+    <use href="#hex" x="400" y="700" transform="scale(2)" class="text-emerald-500/5" />
+    <use href="#hex" x="150" y="800" transform="scale(1.8)" class="text-emerald-500/5" />
+  </g>
+
+  <!-- ========================================== -->
+  <!-- CAPA 2: ENRUTAMIENTO DE DATOS (Circuitos)  -->
+  <!-- ========================================== -->
+  <g fill="none" stroke-width="1" class="text-emerald-500/40" stroke="currentColor">
+    <!-- Rutas angulares 45/90 grados tipo placa base -->
+    <path d="M300,850 L200,750 L200,700 L160,700" />
+    <path d="M300,600 L380,520 L480,520" />
+    <path d="M300,350 L220,270 L140,270 L140,330" />
+    <path d="M300,450 L400,350 L400,270 L460,270" />
+    <path d="M140,500 L200,440 L300,440" stroke-dasharray="4 4"/>
+    <path d="M450,680 L350,780 L300,780" stroke-dasharray="4 4"/>
+    
+    <!-- Anillos de datos rotando alrededor del tallo -->
+    <ellipse cx="300" cy="400" rx="40" ry="15" transform="rotate(-15 300 400)" stroke-width="0.5" class="text-emerald-400/50" stroke-dasharray="2 4" />
+    <ellipse cx="300" cy="650" rx="55" ry="20" transform="rotate(10 300 650)" stroke-width="0.5" class="text-emerald-400/50" stroke-dasharray="2 4" />
+  </g>
+
+  <!-- ========================================== -->
+  <!-- CAPA 3: LA RED HEXAGONAL PRINCIPAL         -->
+  <!-- ========================================== -->
+  <g class="text-emerald-500/30" stroke="currentColor" stroke-width="0.75">
+    <use href="#hex" x="300" y="250" /><use href="#hex" x="300" y="300" /><use href="#hex" x="300" y="350" />
+    <use href="#hex" x="300" y="400" /><use href="#hex" x="300" y="450" /><use href="#hex" x="300" y="500" />
+    <use href="#hex" x="300" y="550" /><use href="#hex" x="300" y="600" /><use href="#hex" x="300" y="650" />
+    <use href="#hex" x="300" y="700" /><use href="#hex" x="300" y="750" /><use href="#hex" x="300" y="800" />
+    
+    <!-- Ramificaciones Izquierda -->
+    <use href="#hex" x="256.7" y="325" /><use href="#hex" x="213.4" y="350" /><use href="#hex" x="170.1" y="375" />
+    <use href="#hex" x="256.7" y="475" /><use href="#hex" x="213.4" y="500" /><use href="#hex" x="170.1" y="475" />
+    <use href="#hex" x="256.7" y="625" /><use href="#hex" x="213.4" y="650" /><use href="#hex" x="170.1" y="675" />
+    <use href="#hex" x="256.7" y="775" /><use href="#hex" x="213.4" y="800" />
+    <use href="#hex" x="126.8" y="400" /><use href="#hex" x="126.8" y="500" />
+
+    <!-- Ramificaciones Derecha -->
+    <use href="#hex" x="343.3" y="275" /><use href="#hex" x="386.6" y="250" /><use href="#hex" x="429.9" y="275" />
+    <use href="#hex" x="343.3" y="425" /><use href="#hex" x="386.6" y="450" /><use href="#hex" x="429.9" y="475" />
+    <use href="#hex" x="343.3" y="575" /><use href="#hex" x="386.6" y="550" /><use href="#hex" x="429.9" y="575" />
+    <use href="#hex" x="343.3" y="725" /><use href="#hex" x="386.6" y="750" />
+    <use href="#hex" x="473.2" y="300" /><use href="#hex" x="473.2" y="450" />
+  </g>
+
+  <!-- ========================================== -->
+  <!-- CAPA 4: TALLO CENTRAL Y HOJAS              -->
+  <!-- ========================================== -->
+  <!-- Vides Centrales -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M300,950 Q270,750 300,550 T300,100" stroke="url(#vineGrad)" stroke-width="4.5" />
+    <path d="M292,950 Q340,800 280,680 T310,480 T280,280 T300,100" stroke="currentColor" stroke-width="2.5" class="text-emerald-500/90"/>
+    <path d="M308,950 Q250,830 320,730 T285,530 T315,330 T300,100" stroke="currentColor" stroke-width="1.5" class="text-emerald-400/80"/>
+    <!-- Micro-cables enredados en el tallo -->
+    <path d="M300,800 Q280,780 300,760 T300,720 T300,680" stroke="currentColor" stroke-width="0.5" class="text-emerald-300/60" stroke-dasharray="2 2"/>
+    <path d="M300,400 Q320,380 300,360 T300,320 T300,280" stroke="currentColor" stroke-width="0.5" class="text-emerald-300/60" stroke-dasharray="2 2"/>
+  </g>
+
+  <!-- Hojas Principales -->
+  <g>
+    <use href="#main-leaf" x="300" y="100" transform="rotate(-90 300 100)" />
+    <use href="#main-leaf" x="300" y="100" transform="rotate(-145 300 100) scale(0.85)" />
+    <use href="#main-leaf" x="300" y="100" transform="rotate(-35 300 100) scale(0.85)" />
+    <use href="#main-leaf" x="300" y="250" transform="rotate(-160 300 250) scale(1.2)" />
+    <use href="#main-leaf" x="300" y="320" transform="rotate(0 300 320) scale(1.1)" />
+    <use href="#main-leaf" x="290" y="480" transform="rotate(-150 290 480) scale(0.9)" />
+    <use href="#main-leaf" x="310" y="540" transform="rotate(20 310 540) scale(1.3)" />
+    <use href="#main-leaf" x="295" y="680" transform="rotate(-170 295 680) scale(1.1)" />
+    <use href="#main-leaf" x="305" y="740" transform="rotate(10 305 740) scale(0.9)" />
+    <use href="#main-leaf" x="300" y="850" transform="rotate(-130 300 850) scale(0.8)" />
+  </g>
+
+  <!-- ========================================== -->
+  <!-- CAPA 5: CLUSTERS DE ENERGÍA Y NODOS        -->
+  <!-- ========================================== -->
+  <g>
+    <!-- IZQUIERDA: Clústeres Bio-Digitales (Suculentas) -->
+    <!-- Nivel Superior -->
+    <g transform="translate(140, 330)">
+      <use href="#hex-node" transform="scale(2.5)" />
+      <use href="#hex-filled" transform="scale(1.5)" class="text-emerald-950/40" />
+      <use href="#succulent" transform="scale(1.2) translate(-10, -20)" />
+    </g>
+
+    <!-- Nivel Medio -->
+    <g transform="translate(140, 500)">
+      <use href="#hex-node" transform="scale(2)" />
+      <use href="#hex-filled" transform="scale(1.2)" class="text-emerald-950/40" />
+      <use href="#succulent" transform="scale(1) translate(0, 0)" />
+      <!-- Satélite pequeño -->
+      <use href="#succulent" transform="scale(0.5) translate(60, -60)" opacity="0.7"/>
+    </g>
+
+    <!-- Nivel Inferior -->
+    <g transform="translate(160, 700)">
+      <use href="#hex-node" transform="scale(1.8)" />
+      <use href="#succulent" transform="scale(0.8) translate(15, 20)" />
+    </g>
+
+    <!-- DERECHA: Clústeres Geométricos (Cristales) -->
+    <!-- Nivel Superior -->
+    <g transform="translate(460, 270)">
+      <use href="#hex-node" transform="scale(2.2)" />
+      <use href="#hex-filled" transform="scale(1.3)" class="text-emerald-950/40" />
+      <use href="#crystal" transform="scale(1.2) translate(10, -10)" />
+      <use href="#micro-dot" transform="translate(-40, -30)" />
+    </g>
+
+    <!-- Nivel Medio -->
+    <g transform="translate(480, 520)">
+      <use href="#hex-node" transform="scale(2.5)" />
+      <use href="#hex-filled" transform="scale(1.6)" class="text-emerald-950/40" />
+      <use href="#crystal" transform="scale(1.3) translate(15, 20)" />
+      <!-- Satélite cristal -->
+      <use href="#crystal" transform="scale(0.6) translate(-60, -50)" opacity="0.6"/>
+    </g>
+
+    <!-- Nivel Inferior -->
+    <g transform="translate(450, 680)">
+      <use href="#hex-node" transform="scale(1.8)" />
+      <use href="#crystal" transform="scale(0.9) translate(15, 20)" />
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- CAPA 6: LA BASE / FUNDACIÓN                -->
+  <!-- ========================================== -->
+  <!-- Planta Base Izquierda -->
+  <g transform="translate(180, 920)">
+    <use href="#hex-node" transform="scale(2.5)" />
+    <use href="#main-leaf" transform="rotate(30) scale(0.7)" />
+    <use href="#main-leaf" transform="rotate(-150) scale(0.7)" />
+    <use href="#main-leaf" transform="rotate(-30) scale(0.8)" />
+    <use href="#main-leaf" transform="rotate(-210) scale(0.8)" />
+    <use href="#main-leaf" transform="rotate(-90) scale(1)" />
+    <use href="#main-leaf" transform="rotate(-120) scale(0.9)" />
+    <use href="#main-leaf" transform="rotate(-60) scale(0.9)" />
+  </g>
+
+  <!-- Planta Base Derecha (Macetero CPU) -->
+  <g transform="translate(420, 920)">
+    <use href="#hex-node" transform="scale(2.5)" />
+    <g stroke="currentColor" stroke-width="1.5" class="text-emerald-500">
+      <path d="M-35,-17.5 L0,-35 L35,-17.5 L35,25 L0,42.5 L-35,25 Z" fill="#022c22" fill-opacity="0.9"/>
+      <path d="M-35,-17.5 L0,0 L35,-17.5 M0,0 L0,42.5" stroke-width="1.5" class="text-emerald-400"/>
+      <!-- Detalles de placa base en el cubo -->
+      <path d="M-20,20 L-20,5 L0,-5 L20,5 L20,20" fill="none" stroke-width="0.75" class="text-emerald-300/50" stroke-dasharray="2 2"/>
+      <circle cx="0" cy="-5" r="1.5" fill="currentColor" class="text-emerald-300" filter="url(#glow)"/>
+    </g>
+    <g transform="translate(0, -15)">
+       <use href="#main-leaf" transform="rotate(-90) scale(0.6)" />
+       <use href="#main-leaf" transform="rotate(-130) scale(0.5)" />
+       <use href="#main-leaf" transform="rotate(-50) scale(0.5)" />
+       <use href="#main-leaf" transform="rotate(-170) scale(0.4)" />
+       <use href="#main-leaf" transform="rotate(-10) scale(0.4)" />
+    </g>
+  </g>
+
+  <!-- Raíces de Poder -->
+  <g fill="none" stroke="currentColor" stroke-linecap="round" class="text-emerald-500/80">
+    <path d="M300,950 Q280,1000 240,1030" stroke-width="3"/>
+    <path d="M300,950 Q320,1000 360,1030" stroke-width="3"/>
+    <path d="M295,970 Q270,1000 270,1040" stroke-width="1.5"/>
+    <path d="M305,970 Q330,1000 330,1040" stroke-width="1.5"/>
+    <path d="M300,980 L300,1050" stroke-width="2"/>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- CAPA 7: POLEN DIGITAL Y DESTELLOS FINALES  -->
+  <!-- ========================================== -->
+  <g>
+    <use href="#micro-dot" x="250" y="150" />
+    <use href="#micro-dot" x="350" y="200" transform="scale(1.5)" />
+    <use href="#micro-dot" x="180" y="400" />
+    <use href="#micro-dot" x="420" y="350" />
+    <use href="#micro-dot" x="280" y="600" transform="scale(2)" opacity="0.6"/>
+    <use href="#micro-dot" x="330" y="750" />
+    <use href="#micro-dot" x="120" y="650" transform="scale(1.5)" />
+    <use href="#micro-dot" x="480" y="800" />
+    <!-- Chispas resplandecientes esporádicas -->
+    <circle cx="230" cy="280" r="1.5" class="text-emerald-300" fill="currentColor" filter="url(#glow)"/>
+    <circle cx="380" cy="620" r="1.5" class="text-emerald-300" fill="currentColor" filter="url(#glow)"/>
+    <circle cx="250" cy="850" r="2" class="text-emerald-300" fill="currentColor" filter="url(#glow)"/>
+  </g>
+
+</svg>
