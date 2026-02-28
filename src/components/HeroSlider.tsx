@@ -50,7 +50,7 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
     if (paused || dragging) return;
     const id = setInterval(
       () => setCurrent((c) => (c + 1) % slides.length),
-      3000,
+      2000,
     );
     return () => clearInterval(id);
   }, [slides.length, paused, dragging]);
@@ -63,7 +63,7 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
     >
       {/* Contenedor de imágenes */}
       <div
-        class="relative aspect-847/700 overflow-hidden rounded-2xl shadow-[0_24px_48px_-12px_rgba(0,0,0,0.14)] ring-1 ring-zinc-900/6 dark:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.55)] dark:ring-white/6 cursor-grab active:cursor-grabbing"
+        class="relative aspect-847/700 cursor-grab overflow-hidden rounded-2xl shadow-[0_24px_48px_-12px_rgba(0,0,0,0.14)] ring-1 ring-zinc-900/6 active:cursor-grabbing dark:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.55)] dark:ring-white/6"
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
@@ -71,7 +71,9 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
         style={{
           touchAction: "pan-y",
           transform: `translateX(${delta * 0.12}px)`,
-          transition: dragging ? "none" : "transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94)",
+          transition: dragging
+            ? "none"
+            : "transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94)",
         }}
       >
         {slides.map((slide, i) => (
@@ -85,7 +87,7 @@ export default function HeroSlider({ slides }: { slides: Slide[] }) {
             decoding="async"
             draggable={false}
             class={[
-              "absolute inset-0 h-full w-full select-none object-contain transition-opacity duration-700 ease-in-out",
+              "absolute inset-0 h-full w-full object-contain transition-opacity duration-700 ease-in-out select-none",
               i === current ? "opacity-100" : "opacity-0",
             ].join(" ")}
           />
