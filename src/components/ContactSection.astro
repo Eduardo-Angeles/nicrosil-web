@@ -10,25 +10,27 @@ import Contact from "./Contact.tsx";
   <!-- Orbs para que el glass tenga contexto -->
   <div
     aria-hidden="true"
-    class="pointer-events-none absolute -left-32 top-0 h-96 w-96 rounded-full bg-cyan-500/28 blur-3xl"
-  ></div>
+    class="pointer-events-none absolute top-0 -left-32 h-96 w-96 rounded-full bg-cyan-500/28 blur-3xl"
+  >
+  </div>
   <div
     aria-hidden="true"
-    class="pointer-events-none absolute -bottom-24 right-0 h-80 w-80 rounded-full bg-cyan-400/20 blur-3xl"
-  ></div>
+    class="pointer-events-none absolute right-0 -bottom-24 h-80 w-80 rounded-full bg-cyan-400/20 blur-3xl"
+  >
+  </div>
 
   <div class="relative mx-auto max-w-6xl px-6">
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
-
       <!-- Columna izquierda: copy — glass panel -->
-      <div class="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-md">
-        <p class="mb-3 text-sm font-semibold uppercase tracking-widest text-green-400">
+      <div
+        class="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-md"
+      >
+        <p
+          class="mb-3 text-sm font-semibold tracking-widest text-green-400 uppercase"
+        >
           Contacto
         </p>
-        <h2
-          id="contacto-heading"
-          class="mb-5 text-4xl font-bold text-zinc-50"
-        >
+        <h2 id="contacto-heading" class="mb-5 text-4xl font-bold text-zinc-50">
           Planta tu jardín digital hoy
         </h2>
         <p class="mb-8 max-w-sm text-base leading-relaxed text-zinc-400">
@@ -81,17 +83,21 @@ import Contact from "./Contact.tsx";
         </div>
 
         <!-- Badge de respuesta rápida -->
-        <div class="mt-10 inline-flex items-center gap-2 rounded-full border border-green-500/20 bg-green-500/10 px-4 py-2">
-          <span class="h-1.5 w-1.5 rounded-full bg-green-400" aria-hidden="true"></span>
+        <div
+          class="mt-10 inline-flex items-center gap-2 rounded-full border border-green-500/20 bg-green-500/10 px-4 py-2"
+        >
+          <span class="h-1.5 w-1.5 rounded-full bg-green-400" aria-hidden="true"
+          ></span>
           <span class="text-xs text-green-400">Respuesta en menos de 24 h</span>
         </div>
       </div>
 
       <!-- Columna derecha: formulario — glass panel -->
-      <div class="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-md">
+      <div
+        class="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-md"
+      >
         <Contact client:visible />
       </div>
-
     </div>
   </div>
 </section>

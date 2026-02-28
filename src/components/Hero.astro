@@ -7,7 +7,7 @@ const slides = [
     alt: "Trasciende Gym — sitio web desarrollado por Nicrosil",
     label: "Trasciende Gym",
     category: "Gym & Fitness",
-    bgLight: "#72E5CE", // cyan-verde más vivo, energético
+    bgLight: "#9BD5C8", // cyan-verde más suave
     bgDark: "#0D3828",
   },
   {
@@ -15,7 +15,7 @@ const slides = [
     alt: "Magical Cleaning — sitio web desarrollado por Nicrosil",
     label: "Magical Cleaning",
     category: "Limpieza Profesional",
-    bgLight: "#70D4F5", // cyan-azul más vivo, limpio y fresco
+    bgLight: "#9EC7D7", // cyan más suave
     bgDark: "#072234",
   },
 ];
@@ -66,9 +66,13 @@ const slides = [
   </div>
 
   <!-- Slider de portfolio — animación 4 -->
-  <div class="animate-fade-up mt-14 w-full max-w-2xl delay-300">
+  <div
+    id="trabajos-recientes"
+    class="animate-fade-up mt-14 w-full max-w-2xl scroll-mt-28 delay-300"
+  >
     <div class="mb-5 flex justify-center">
-      <div
+      <a
+        href="#trabajos-recientes"
         class="flex items-center justify-center gap-1.5 rounded-full border border-white/80 bg-white/60 px-3 py-1.5 backdrop-blur-sm sm:gap-2 sm:px-4 dark:border-white/10 dark:bg-zinc-800/60"
       >
         <span
@@ -87,7 +91,7 @@ const slides = [
         >
           Trabajos recientes
         </p>
-      </div>
+      </a>
     </div>
 
     <HeroSlider slides={slides} client:load />

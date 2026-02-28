@@ -104,6 +104,13 @@ body {
   transition: --hero-bg-start-dark 0.9s ease;
 }
 
+/* ─── Process: palabras destacadas en descripción ───────────────────── */
+.process-desc em {
+  color: var(--step-color);
+  font-style: normal;
+  font-weight: 600;
+}
+
 /* ─── Animaciones de entrada ─────────────────────────────────────────── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
