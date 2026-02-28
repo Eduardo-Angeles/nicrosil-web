@@ -7,67 +7,49 @@ const slides = [
     alt: "Trasciende Gym — sitio web desarrollado por Nicrosil",
     label: "Trasciende Gym",
     category: "Gym & Fitness",
+    bgLight: "#72E5CE", // cyan-verde más vivo, energético
+    bgDark: "#0D3828",
   },
   {
     src: "/web2.webp",
     alt: "Magical Cleaning — sitio web desarrollado por Nicrosil",
     label: "Magical Cleaning",
     category: "Limpieza Profesional",
+    bgLight: "#70D4F5", // cyan-azul más vivo, limpio y fresco
+    bgDark: "#072234",
   },
 ];
 ---
 
 <section
   id="inicio"
-  class="flex flex-col items-center bg-gradient-to-b from-[#B8F2FB] to-[#F0FBFC] px-4 pt-4 pb-24 dark:from-[#082028] dark:to-[#060B0D]"
+  class="flex flex-col items-center px-4 pt-4 pb-24"
   aria-label="Inicio"
 >
-  <!-- Badge pill — animación 1 -->
-  <div
-    class="animate-fade-up mt-24 flex max-w-full items-center justify-center gap-1.5 overflow-hidden rounded-full border border-white/80 bg-white/60 px-3 py-1.5 backdrop-blur-sm sm:gap-2 sm:px-4 dark:border-white/10 dark:bg-zinc-800/60"
-  >
-    <span
-      class="relative flex h-3 w-3 items-center justify-center"
-      aria-hidden="true"
-    >
-      <span
-        class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"
-      ></span>
-      <span
-        class="relative inline-flex h-2 w-2 rounded-full bg-green-600 dark:bg-green-400"
-      ></span>
-    </span>
-    <p
-      class="text-[11px] font-medium whitespace-nowrap text-zinc-600 sm:text-xs dark:text-zinc-400"
-    >
-      Desarrollo Web · Oaxaca, México · Alcance Global
-    </p>
-  </div>
-
-  <!-- H1 — animación 2 -->
+  <!-- H1 — animación 1 -->
   <h1
-    class="animate-fade-up mt-8 max-w-2xl text-center text-4xl leading-tight font-semibold tracking-tight text-zinc-800 delay-100 md:text-[3.75rem]/[1.15] dark:text-zinc-50"
+    class="animate-fade-up mt-24 max-w-2xl text-center text-4xl leading-tight font-extrabold tracking-[-0.02em] text-zinc-900 md:text-[4rem]/[1.1] dark:text-zinc-50"
   >
     Tu Web,<br />
     <span
       class="bg-gradient-to-r from-cyan-500 to-green-500 bg-clip-text text-transparent dark:from-cyan-400 dark:to-green-400"
     >
-      Cultivada con Precisión.
+      Cultivada con Intención.
     </span>
   </h1>
 
-  <!-- Subtítulo — animación 3 -->
+  <!-- Subtítulo — animación 2 -->
   <p
-    class="animate-fade-up mt-5 max-w-[580px] text-center text-sm leading-relaxed text-zinc-500 delay-200 dark:text-zinc-400"
+    class="animate-fade-up mt-5 max-w-[680px] text-center text-sm leading-relaxed font-light text-zinc-600 delay-100 sm:text-base md:text-lg dark:text-zinc-300"
   >
-    Sitios de alto rendimiento construidos con Astro. SEO técnico, velocidad
-    máxima y una presencia digital que no para de crecer desde Oaxaca hacia el
-    mundo.
+    Somos especialistas en dar vida a sitios web de alto rendimiento. Trabajamos
+    junto a ti para traducir tu esencia en una presencia digital limpia, veloz y
+    con un propósito claro, cuidando cada detalle.
   </p>
 
-  <!-- CTAs — animación 4 -->
+  <!-- CTAs — animación 3 -->
   <div
-    class="animate-fade-up mt-10 flex flex-wrap justify-center gap-3 delay-300"
+    class="animate-fade-up mt-10 flex flex-wrap justify-center gap-3 delay-200"
   >
     <a
       href="#servicios"
@@ -83,15 +65,29 @@ const slides = [
     </a>
   </div>
 
-  <!-- Slider de portfolio — animación 5 -->
-  <div class="animate-fade-up mt-14 w-full max-w-2xl delay-400">
-    <!-- Label: mismo estilo pill que el badge superior -->
+  <!-- Slider de portfolio — animación 4 -->
+  <div class="animate-fade-up mt-14 w-full max-w-2xl delay-300">
     <div class="mb-5 flex justify-center">
-      <span
-        class="rounded-full border border-white/70 bg-white/50 px-4 py-1.5 text-xs font-semibold tracking-widest text-zinc-500 uppercase backdrop-blur-sm dark:border-white/10 dark:bg-zinc-800/50 dark:text-zinc-400"
+      <div
+        class="flex items-center justify-center gap-1.5 rounded-full border border-white/80 bg-white/60 px-3 py-1.5 backdrop-blur-sm sm:gap-2 sm:px-4 dark:border-white/10 dark:bg-zinc-800/60"
       >
-        Trabajos recientes
-      </span>
+        <span
+          class="relative flex h-3 w-3 items-center justify-center"
+          aria-hidden="true"
+        >
+          <span
+            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"
+          ></span>
+          <span
+            class="relative inline-flex h-2 w-2 rounded-full bg-green-600 dark:bg-green-400"
+          ></span>
+        </span>
+        <p
+          class="text-[11px] font-medium whitespace-nowrap text-zinc-600 sm:text-xs dark:text-zinc-400"
+        >
+          Trabajos recientes
+        </p>
+      </div>
     </div>
 
     <HeroSlider slides={slides} client:load />

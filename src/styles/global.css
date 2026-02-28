@@ -21,7 +21,7 @@
   --color-brand-border:  var(--border);
   --color-brand-text:    var(--text);
   --color-brand-muted:   var(--muted);
-  --color-brand-primary: var(--primary); /* índigo — color principal */
+  --color-brand-primary: var(--primary); /* cyan  — color principal */
   --color-brand-spark:   var(--spark);   /* verde  — color secundario */
 }
 
@@ -76,6 +76,32 @@ body {
     radial-gradient(ellipse 75% 35% at 55% -5%,  rgba(6, 182, 212, 0.18) 0%, transparent 65%),
     radial-gradient(ellipse 55% 40% at 95% 50%,  rgba(8, 145, 178, 0.12) 0%, transparent 55%),
     radial-gradient(ellipse 50% 35% at 0%  95%,  rgba(34, 211, 238, 0.10) 0%, transparent 50%);
+}
+
+/* ─── Hero: fondo dinámico por slide ────────────────────────────────── */
+
+/* Registrar las custom properties para que el browser pueda animarlas    */
+@property --hero-bg-start {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #72E5CE; /* coincide con slide 0 en light mode */
+}
+
+@property --hero-bg-start-dark {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0D3828; /* coincide con slide 0 en dark mode  */
+}
+
+/* El gradiente del Hero usa las variables; la transición anima el color  */
+#inicio {
+  background: linear-gradient(to bottom, var(--hero-bg-start), #F0FBFC);
+  transition: --hero-bg-start 0.9s ease;
+}
+
+:root.dark #inicio {
+  background: linear-gradient(to bottom, var(--hero-bg-start-dark), #060B0D);
+  transition: --hero-bg-start-dark 0.9s ease;
 }
 
 /* ─── Animaciones de entrada ─────────────────────────────────────────── */
