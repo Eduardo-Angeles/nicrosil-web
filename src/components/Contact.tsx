@@ -103,7 +103,7 @@ export default function Contact() {
             }
             aria-describedby={errors.name ? "name-error" : undefined}
             aria-invalid={!!errors.name}
-            class={`w-full rounded-xl border px-4 py-3 text-sm text-zinc-900 outline-none transition-colors placeholder:text-zinc-400 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder:text-zinc-600 dark:focus:border-green-400 dark:focus:ring-green-400/20 ${
+            class={`w-full rounded-xl border px-4 py-3 text-sm text-zinc-900 outline-none transition-colors placeholder:text-zinc-400 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder:text-zinc-600 dark:focus:border-cyan-400 dark:focus:ring-cyan-400/20 ${
               errors.name
                 ? "border-red-400 dark:border-red-500"
                 : "border-zinc-200 bg-white dark:border-zinc-700"
@@ -134,7 +134,7 @@ export default function Contact() {
             }
             aria-describedby={errors.email ? "email-error" : undefined}
             aria-invalid={!!errors.email}
-            class={`w-full rounded-xl border px-4 py-3 text-sm text-zinc-900 outline-none transition-colors placeholder:text-zinc-400 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder:text-zinc-600 dark:focus:border-green-400 dark:focus:ring-green-400/20 ${
+            class={`w-full rounded-xl border px-4 py-3 text-sm text-zinc-900 outline-none transition-colors placeholder:text-zinc-400 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder:text-zinc-600 dark:focus:border-cyan-400 dark:focus:ring-cyan-400/20 ${
               errors.email
                 ? "border-red-400 dark:border-red-500"
                 : "border-zinc-200 bg-white dark:border-zinc-700"
@@ -167,7 +167,7 @@ export default function Contact() {
               aria-pressed={form.project === type}
               class={`rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
                 form.project === type
-                  ? "border-green-500 bg-green-50 text-green-700 dark:border-green-400 dark:bg-green-500/10 dark:text-green-400"
+                  ? "border-cyan-500 bg-cyan-50 text-cyan-700 dark:border-cyan-400 dark:bg-cyan-500/10 dark:text-cyan-400"
                   : "border-zinc-200 bg-white text-zinc-500 hover:border-zinc-300 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:border-zinc-600"
               }`}
             >
@@ -198,7 +198,7 @@ export default function Contact() {
           }
           aria-describedby={errors.message ? "message-error" : undefined}
           aria-invalid={!!errors.message}
-          class={`w-full resize-none rounded-xl border px-4 py-3 text-sm text-zinc-900 outline-none transition-colors placeholder:text-zinc-400 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder:text-zinc-600 dark:focus:border-green-400 dark:focus:ring-green-400/20 ${
+          class={`w-full resize-none rounded-xl border px-4 py-3 text-sm text-zinc-900 outline-none transition-colors placeholder:text-zinc-400 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder:text-zinc-600 dark:focus:border-cyan-400 dark:focus:ring-cyan-400/20 ${
             errors.message
               ? "border-red-400 dark:border-red-500"
               : "border-zinc-200 bg-white dark:border-zinc-700"
@@ -217,7 +217,7 @@ export default function Contact() {
 
       <button
         type="submit"
-        class="inline-flex items-center justify-center gap-2 self-start rounded-xl bg-green-600 px-7 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90 dark:bg-green-500"
+        class="inline-flex items-center justify-center gap-2 self-start rounded-xl bg-cyan-600 px-7 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90 dark:bg-cyan-500"
       >
         Planta tu jardín digital
         <svg

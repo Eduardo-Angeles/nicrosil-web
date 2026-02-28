@@ -37,7 +37,7 @@ function DesktopCard({ badge, title, description, image, iconHtml }: Service) {
       class="group relative cursor-pointer overflow-hidden rounded-3xl"
       style={{
         boxShadow: hovered
-          ? "0 28px 56px -10px rgba(16,185,129,0.22), 0 16px 32px -14px rgba(0,0,0,0.5)"
+          ? "0 28px 56px -10px rgba(6,182,212,0.22), 0 16px 32px -14px rgba(0,0,0,0.5)"
           : "0 8px 28px -8px rgba(0,0,0,0.3)",
         transition: "box-shadow 0.4s ease",
       }}
@@ -73,7 +73,7 @@ function DesktopCard({ badge, title, description, image, iconHtml }: Service) {
         style={{
           opacity: hovered ? 1 : 0,
           background:
-            "radial-gradient(ellipse 90% 45% at 50% 100%, rgba(16,185,129,0.20), transparent 70%)",
+            "radial-gradient(ellipse 90% 45% at 50% 100%, rgba(6,182,212,0.20), transparent 70%)",
         }}
       />
 
@@ -99,7 +99,7 @@ function DesktopCard({ badge, title, description, image, iconHtml }: Service) {
 
           {/* Línea de acento */}
           <div
-            class="mb-4 h-0.5 rounded-full bg-gradient-to-r from-green-400 to-emerald-300 transition-all duration-500"
+            class="mb-4 h-0.5 rounded-full bg-gradient-to-r from-cyan-400 to-green-400 transition-all duration-500"
             style={{ width: hovered ? "3.5rem" : "2rem" }}
           />
 
@@ -150,7 +150,7 @@ function MobileCard({ badge, title, description, image, iconHtml }: Service) {
           </span>
         </div>
         <h3 class="mb-2 text-xl font-bold text-white drop-shadow-lg">{title}</h3>
-        <div class="mb-3 h-0.5 w-8 rounded-full bg-gradient-to-r from-green-400 to-emerald-300" />
+        <div class="mb-3 h-0.5 w-8 rounded-full bg-gradient-to-r from-cyan-400 to-green-400" />
         <p class="text-sm leading-relaxed text-white/80">{description}</p>
       </div>
     </article>
@@ -223,7 +223,7 @@ function MobileCarousel({ services }: { services: Service[] }) {
               onClick={() => setCurrent(i)}
               aria-label={`Ver servicio ${i + 1}`}
               class={[
-                "h-1.5 rounded-full bg-green-500 transition-all duration-300",
+                "h-1.5 rounded-full bg-cyan-500 transition-all duration-300",
                 i === current ? "w-6 opacity-100" : "w-1.5 opacity-30",
               ].join(" ")}
             />

@@ -21,29 +21,32 @@
   --color-brand-border:  var(--border);
   --color-brand-text:    var(--text);
   --color-brand-muted:   var(--muted);
-  --color-brand-spark:   var(--spark);
+  --color-brand-primary: var(--primary); /* índigo — color principal */
+  --color-brand-spark:   var(--spark);   /* verde  — color secundario */
 }
 
 /* ─── Light theme (default) ─────────────────────────────────────────── */
 :root {
   color-scheme: light;
-  --bg:      #F4FCF6;
-  --surface: #E5F3EA;
-  --border:  #BFE0CA;
+  --bg:      #F0FBFC;
+  --surface: #E0F5F8;
+  --border:  #9DD9E3;
   --text:    #09090B;
-  --muted:   #4D7A5E;
-  --spark:   #16A34A;
+  --muted:   #3D7A82;
+  --primary: #0891B2; /* cyan-600 */
+  --spark:   #16A34A; /* green-600  */
 }
 
 /* ─── Dark theme ────────────────────────────────────────────────────── */
 :root.dark {
   color-scheme: dark;
-  --bg:      #070B09;
-  --surface: #0C1610;
-  --border:  #162519;
+  --bg:      #060B0D;
+  --surface: #0B1519;
+  --border:  #122028;
   --text:    #EFF7F1;
-  --muted:   #6A8D79;
-  --spark:   #22C55E;
+  --muted:   #5A8D96;
+  --primary: #22D3EE; /* cyan-400 */
+  --spark:   #22C55E; /* green-500  */
 }
 
 /* ─── Base ──────────────────────────────────────────────────────────── */
@@ -63,16 +66,16 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image:
-    radial-gradient(ellipse 75% 35% at 55% -5%,  rgba(34, 197, 94, 0.10) 0%, transparent 65%),
-    radial-gradient(ellipse 55% 40% at 95% 50%,  rgba(16, 185, 129, 0.07) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 35% at 0%  95%,  rgba(52, 211, 153, 0.05) 0%, transparent 50%);
+    radial-gradient(ellipse 75% 35% at 55% -5%,  rgba(6, 182, 212, 0.12) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 40% at 95% 50%,  rgba(8, 145, 178, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 35% at 0%  95%,  rgba(34, 211, 238, 0.06) 0%, transparent 50%);
 }
 
 .dark body {
   background-image:
-    radial-gradient(ellipse 75% 35% at 55% -5%,  rgba(34, 197, 94, 0.16) 0%, transparent 65%),
-    radial-gradient(ellipse 55% 40% at 95% 50%,  rgba(16, 185, 129, 0.11) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 35% at 0%  95%,  rgba(52, 211, 153, 0.09) 0%, transparent 50%);
+    radial-gradient(ellipse 75% 35% at 55% -5%,  rgba(6, 182, 212, 0.18) 0%, transparent 65%),
+    radial-gradient(ellipse 55% 40% at 95% 50%,  rgba(8, 145, 178, 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 35% at 0%  95%,  rgba(34, 211, 238, 0.10) 0%, transparent 50%);
 }
 
 /* ─── Animaciones de entrada ─────────────────────────────────────────── */
