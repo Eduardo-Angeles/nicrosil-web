@@ -1,39 +1,48 @@
 ---
-import ServicesCards from "@components/ServicesCards.tsx";
-import type { Service } from "@components/ServicesCards.tsx";
+import ServicesCards from "@components/interactive/ServicesCards.tsx";
+import type { Service } from "@components/interactive/ServicesCards.tsx";
+import SectionHeader from "@components/ui/SectionHeader.astro";
 
 const services: Service[] = [
   {
     badge: "Lighthouse 100",
     title: "Sitios de Alto Rendimiento",
     description:
-      "Construidos con Astro para carga instantánea. Performance, SEO y Accesibilidad al máximo nivel. Tu sitio compite al estándar de las mejores empresas del mundo.",
+      "Tu sitio carga en un parpadeo y se posiciona desde el primer día. Nada de templates lentos ni compromisos a medias.",
     image: "/altorendimiento.jpg",
     iconHtml: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
+    colorLight: "#0E7490",
+    colorDark: "#22D3EE",
   },
   {
     badge: "Core Web Vitals",
     title: "SEO Técnico y Local",
     description:
-      "Posicionamiento orgánico con alcance global. Structured data, Core Web Vitals y estrategia de keywords para que te encuentren antes que a la competencia.",
+      "Que te encuentren antes que a tu competencia. SEO técnico real, no promesas vacías ni trucos de corto plazo.",
     image: "/seotecnico.jpeg",
     iconHtml: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>`,
+    colorLight: "#16A34A",
+    colorDark: "#4ADE80",
   },
   {
     badge: "UI / UX",
     title: "Identidad Digital",
     description:
-      "Diseño que refleja la esencia de tu marca. Tipografía, color y layout que comunican quién eres antes de que el usuario lea una sola línea de texto.",
+      "Tu marca tiene personalidad propia. El diseño la hace visible antes de que alguien lea una sola palabra.",
     image: "/identidaddigital.jpeg",
     iconHtml: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,
+    colorLight: "#7C3AED",
+    colorDark: "#A78BFA",
   },
   {
     badge: "Continuo",
     title: "El Jardín Digital",
     description:
-      "Tu sitio no se entrega y se olvida, se cultiva. Monitoreo continuo, mejoras de rendimiento, contenido actualizado y optimización SEO permanente.",
+      "No te entrego el sitio y desaparezco. Lo seguimos cuidando juntos: métricas, velocidad y mejoras mes a mes.",
     image: "/jardindigital.jpeg",
     iconHtml: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 1 1.1 7.14c-1.2.4-2.3.5-3.4.3-.8-2.1-1-4.1-.5-6.4 1.1-.5 2-.7 2.8-1z"/></svg>`,
+    colorLight: "#B45309",
+    colorDark: "#FCD34D",
   },
 ];
 ---
@@ -44,26 +53,17 @@ const services: Service[] = [
   aria-labelledby="servicios-heading"
 >
   <div class="mx-auto max-w-6xl">
-    <!-- Header -->
-    <div class="mb-14 px-6 text-center">
-      <p
-        class="mb-3 text-sm font-semibold tracking-widest text-green-600 uppercase dark:text-green-400"
-      >
-        Servicios
-      </p>
-      <h2
+    <!-- Header — eyebrow color uses the active service CSS var injected by ServicesCards -->
+    <div class="px-6">
+      <SectionHeader
+        eyebrow="Servicios"
         id="servicios-heading"
-        class="mb-4 text-4xl font-bold text-zinc-900 md:text-5xl dark:text-zinc-50"
+        description="Diseño, rendimiento y cultivo continuo. Cada pieza pensada para que tu sitio crezca y compita a nivel global."
+        eyebrowStyle="color: var(--service-accent, #0E7490); transition: color 0.5s ease"
       >
         Todo lo que necesita<br class="hidden sm:block" />
-        tu presencia digital
-      </h2>
-      <p
-        class="mx-auto max-w-xl text-base leading-relaxed text-zinc-500 dark:text-zinc-400"
-      >
-        Diseño, rendimiento y cultivo continuo. Cada pieza pensada para que tu
-        sitio crezca y compita a nivel global.
-      </p>
+        <span class="transition-colors duration-500" style="color: var(--service-accent, #0E7490)">tu presencia digital</span>
+      </SectionHeader>
     </div>
 
     <!-- Tarjetas: edge-to-edge en mobile, con padding en desktop -->

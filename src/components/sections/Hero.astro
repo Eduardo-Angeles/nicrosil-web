@@ -1,0 +1,114 @@
+---
+import HeroSlider from "@components/interactive/HeroSlider.tsx";
+import PulseDot from "@components/ui/PulseDot.astro";
+import Arrow from "@icons/Arrow.astro";
+
+/**
+ * Each slide shape passed to HeroSlider:
+ *   src      — path to the portfolio screenshot image
+ *   alt      — descriptive alt text for the image
+ *   label    — project name shown in the caption
+ *   category — project type shown beside the label
+ *   bgLight  — background color of the slide container in light mode
+ *   bgDark   — background color of the slide container in dark mode
+ *
+ * HeroSlider mutates CSS vars on its root element to crossfade backgrounds;
+ * keep bgLight/bgDark as valid hex or CSS color strings.
+ */
+const slides = [
+  {
+    src: "/web1.webp",
+    alt: "Trasciende Gym — sitio web desarrollado por Nicrosil",
+    label: "Trasciende Gym",
+    category: "Gym & Fitness",
+    bgLight: "#9BD5C8", // cyan-verde más suave
+    bgDark: "#0D3828",
+  },
+  {
+    src: "/web2.webp",
+    alt: "Magical Cleaning — sitio web desarrollado por Nicrosil",
+    label: "Magical Cleaning",
+    category: "Limpieza Profesional",
+    bgLight: "#9EC7D7", // cyan más suave
+    bgDark: "#072234",
+  },
+];
+---
+
+<section
+  id="inicio"
+  class="flex flex-col items-center px-4 pt-4 pb-24"
+  aria-label="Inicio"
+>
+  <!-- H1 — animación 1 -->
+  <h1
+    class="animate-fade-up font-display mt-24 max-w-2xl text-center text-5xl leading-[1.2] font-extrabold text-cyan-900 md:text-6xl dark:text-zinc-50"
+  >
+    Tu Web,<br />
+    <span
+      class="bg-gradient-to-r from-cyan-600 to-green-900 bg-clip-text text-transparent dark:from-cyan-300 dark:to-cyan-500"
+    >
+      Cultivada con Intención.
+    </span>
+  </h1>
+
+  <!-- Subtítulo — animación 2 -->
+  <p
+    class="animate-fade-up mt-8 max-w-xl text-center text-base leading-relaxed text-zinc-600 transition-none delay-100 md:text-lg dark:text-zinc-300"
+  >
+    Damos forma a tu página web para que cuente quién eres y conecte de verdad.
+    Sitios rápidos, claros y creados contigo, cuidando cada detalle.
+  </p>
+
+  <!-- CTAs — animación 3 -->
+  <div
+    class="animate-fade-up mt-10 flex flex-wrap justify-center gap-3 delay-200"
+  >
+    <!-- Primario -->
+    <a
+      href="#servicios"
+      class="group relative overflow-hidden rounded-xl bg-gradient-to-r from-cyan-600 to-cyan-500 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-cyan-500/30 transition-all hover:brightness-110 hover:shadow-cyan-500/50 dark:from-cyan-500 dark:to-cyan-400"
+    >
+      <span aria-hidden="true" class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full"></span>
+      <span class="relative flex items-center gap-2">
+        Ver servicios
+        <Arrow class="transition-transform group-hover:translate-x-0.5" />
+      </span>
+    </a>
+    <!-- Secundario -->
+    <a
+      href="#contacto"
+      class="group relative overflow-hidden rounded-xl border border-cyan-200 bg-white px-6 py-3.5 text-sm font-semibold text-zinc-700 shadow-sm transition-all hover:border-cyan-300 hover:bg-cyan-50 hover:shadow-md dark:border-white/10 dark:bg-white/5 dark:text-zinc-200 dark:hover:border-cyan-700/40 dark:hover:bg-cyan-500/10"
+    >
+      <span class="flex items-center gap-2">
+        Cotización gratuita
+        <Arrow size={14} class="transition-transform group-hover:translate-x-0.5" />
+      </span>
+    </a>
+  </div>
+
+  <!-- Slider de portfolio — animación 4 -->
+  <div
+    id="trabajos-recientes"
+    class="animate-fade-up mt-14 w-full max-w-2xl scroll-mt-28 delay-300"
+  >
+    <div class="mb-5 flex justify-center">
+      <a
+        href="#trabajos-recientes"
+        class="flex items-center justify-center gap-1.5 rounded-full border border-white/80 bg-white/60 px-3 py-1.5 backdrop-blur-sm sm:gap-2 sm:px-4 dark:border-white/10 dark:bg-zinc-800/60"
+      >
+        <!-- Wrapper keeps the badge width stable regardless of dot animation -->
+        <span class="relative flex h-3 w-3 items-center justify-center">
+          <PulseDot color="green" />
+        </span>
+        <p
+          class="text-[11px] font-medium whitespace-nowrap text-zinc-600 sm:text-xs dark:text-zinc-400"
+        >
+          Trabajos recientes
+        </p>
+      </a>
+    </div>
+
+    <HeroSlider slides={slides} client:load />
+  </div>
+</section>

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "preact/hooks";
+import { useDarkMode } from "@hooks/useDarkMode";
 
 export type Step = {
   number: string;
@@ -15,6 +16,16 @@ export type Effect = "blink" | "slide" | "zoom";
 
 type StepState = "active" | "past" | "future";
 
+/**
+ * getStyle — returns the inline style object for a step panel based on its
+ * current state and the chosen transition effect.
+ *
+ * The visibility trick: when a step becomes active, `visibility` is applied
+ * immediately (`0s linear 0s`). When a step becomes inactive, `visibility`
+ * is delayed until after the opacity/transform transition finishes
+ * (`0s linear ${dur}`), so the element fades out before becoming hidden.
+ * This avoids tab-order and click-through issues without using display:none.
+ */
 function getStyle(state: StepState, effect: Effect): Record<string, string> {
   const dur = "0.7s";
   const ease = "cubic-bezier(0.4,0,0.2,1)";
@@ -62,7 +73,7 @@ function getStyle(state: StepState, effect: Effect): Record<string, string> {
     return { opacity: "0", visibility: "hidden", transform: x, transition: t };
   }
 
-  // zoom
+  // zoom: future steps enter at scale(0.85), past steps exit at scale(1.15)
   const scale = state === "future" ? "scale(0.85)" : "scale(1.15)";
   return {
     opacity: "0",
@@ -82,23 +93,15 @@ export default function ProcessScrolled({
 }) {
   const [active, setActive] = useState(0);
   const [stepProgress, setStepProgress] = useState(0);
-  const [isDark, setIsDark] = useState(false);
+  // useDarkMode subscribes to class changes on <html> via MutationObserver
+  const isDark = useDarkMode();
   const sectionRef = useRef<HTMLElement | null>(null);
 
-  // Reactivo al cambio de dark mode
-  useEffect(() => {
-    const update = () =>
-      setIsDark(document.documentElement.classList.contains("dark"));
-    update();
-    const obs = new MutationObserver(update);
-    obs.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-    return () => obs.disconnect();
-  }, []);
-
-  // Scroll tracker: calcula qué paso está activo y el progreso dentro del paso
+  // Scroll tracker: calcula qué paso está activo y el progreso dentro del paso.
+  // Scroll height formula: the section height is steps.length * 40vh (set below).
+  // scrollRange = sectionHeight - viewportHeight = the total scrollable distance.
+  // p maps scrolled position to [0, 1) across the full section range.
+  // active = Math.floor(p * steps.length), stepProgress = fractional remainder.
   useEffect(() => {
     function onScroll() {
       const el = sectionRef.current;

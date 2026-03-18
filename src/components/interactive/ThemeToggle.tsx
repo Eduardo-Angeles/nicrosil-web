@@ -8,7 +8,6 @@ export default function ThemeToggle() {
   );
   const [angle, setAngle] = useState(0);
   const [hovered, setHovered] = useState(false);
-  const [introGlow, setIntroGlow] = useState(false);
 
   useEffect(() => {
     const stored = localStorage.getItem("theme");
@@ -17,14 +16,6 @@ export default function ThemeToggle() {
     } else {
       setDark(window.matchMedia("(prefers-color-scheme: dark)").matches);
     }
-
-    // Glow de entrada: aparece a 1s, se va a los 2s
-    const show = setTimeout(() => setIntroGlow(true), 1000);
-    const hide = setTimeout(() => setIntroGlow(false), 2000);
-    return () => {
-      clearTimeout(show);
-      clearTimeout(hide);
-    };
   }, []);
 
   function toggle() {
@@ -48,7 +39,7 @@ export default function ThemeToggle() {
       aria-label={dark ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
       class="relative flex h-9 w-9 items-center justify-center rounded-lg text-zinc-500 transition-[colors,box-shadow] duration-300 hover:bg-zinc-100 hover:text-zinc-900 focus:outline-none active:brightness-100 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
       style={
-        hovered || introGlow
+        hovered
           ? { boxShadow: `0 0 14px 3px ${glowColor}` }
           : undefined
       }

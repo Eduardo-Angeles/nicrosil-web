@@ -1,5 +1,8 @@
 ---
-import Contact from "./Contact.tsx";
+import Contact from "@components/interactive/Contact.tsx";
+import SectionHeader from "@components/ui/SectionHeader.astro";
+import PulseDot from "@components/ui/PulseDot.astro";
+import Arrow from "@icons/Arrow.astro";
 
 const benefits = [
   {
@@ -39,23 +42,16 @@ const benefits = [
   <div class="relative mx-auto max-w-6xl px-6">
 
     <!-- Encabezado de sección centrado -->
-    <div class="mb-14 text-center">
-      <p class="mb-3 text-sm font-semibold uppercase tracking-widest text-green-600 dark:text-green-400">
-        Contacto
-      </p>
-      <h2
-        id="contacto-heading"
-        class="mb-4 text-4xl font-bold text-zinc-900 dark:text-zinc-50 md:text-5xl"
-      >
-        Planta tu jardín<br class="hidden sm:block" />
-        <span class="bg-gradient-to-r from-green-500 to-cyan-500 bg-clip-text text-transparent dark:from-green-400 dark:to-cyan-400">
-          digital hoy
-        </span>
-      </h2>
-      <p class="mx-auto max-w-xl text-base leading-relaxed text-zinc-500 dark:text-zinc-400">
-        Cuéntame tu proyecto. Sin compromiso, sin tecnicismos. En menos de 24 horas tienes mi análisis inicial.
-      </p>
-    </div>
+    <SectionHeader
+      eyebrow="Contacto"
+      id="contacto-heading"
+      description="Cuéntame tu proyecto. Sin compromiso, sin tecnicismos. En menos de 24 horas tienes mi análisis inicial."
+    >
+      Planta tu jardín<br class="hidden sm:block" />
+      <span class="text-cyan-700 dark:text-cyan-400">
+        digital hoy
+      </span>
+    </SectionHeader>
 
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
 
@@ -78,16 +74,13 @@ const benefits = [
         <div class="p-8">
           <!-- Disponibilidad -->
           <div class="mb-7 inline-flex items-center gap-2 rounded-full border border-green-600/25 bg-green-500/10 px-3.5 py-1.5 dark:border-green-500/20">
-            <span class="relative flex h-2 w-2" aria-hidden="true">
-              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75 dark:bg-green-400"></span>
-              <span class="relative inline-flex h-2 w-2 rounded-full bg-green-500 dark:bg-green-400"></span>
-            </span>
+            <PulseDot color="green" />
             <span class="text-xs font-semibold text-green-600 dark:text-green-400">
               Disponible para nuevos proyectos
             </span>
           </div>
 
-          <h3 class="mb-2 text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+          <h3 class="mb-2 font-display text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50">
             ¿Hablamos?
           </h3>
           <p class="mb-8 text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
@@ -131,9 +124,7 @@ const benefits = [
               </svg>
             </span>
             <span class="flex-1">contacto@nicrosil.com</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="opacity-40 transition-all group-hover:translate-x-0.5 group-hover:opacity-80">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
+            <Arrow size={14} class="opacity-40 transition-all group-hover:translate-x-0.5 group-hover:opacity-80" />
           </a>
         </div>
       </div>

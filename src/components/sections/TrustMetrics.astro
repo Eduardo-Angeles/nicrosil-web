@@ -1,4 +1,12 @@
 ---
+/**
+ * TrustMetrics — key social proof numbers displayed in a compact grid.
+ *
+ * CountUp is a Preact component that animates a number from `initial` to
+ * `final` over `duration` ms using the useProgressiveNumber hook.
+ * `client:visible` defers hydration until the section scrolls into view,
+ * so the animation plays at the right moment without blocking the initial load.
+ */
 import { CountUp } from "@components/ui/CountUp.tsx";
 ---
 
@@ -28,7 +36,7 @@ import { CountUp } from "@components/ui/CountUp.tsx";
         +<CountUp client:visible initial={0} final={5} duration={1200} />
       </p>
       <p
-        class="text-xs font-semibold tracking-widest text-green-600 uppercase dark:text-green-400"
+        class="text-xs font-semibold tracking-[0.2em] text-cyan-700 uppercase dark:text-cyan-400"
       >
         Años de experiencia
       </p>
@@ -42,7 +50,7 @@ import { CountUp } from "@components/ui/CountUp.tsx";
         <CountUp client:visible initial={0} final={100} duration={1400} />
       </p>
       <p
-        class="text-xs font-semibold tracking-widest text-green-600 uppercase dark:text-green-400"
+        class="text-xs font-semibold tracking-[0.2em] text-cyan-700 uppercase dark:text-cyan-400"
       >
         Lighthouse score
       </p>
@@ -56,7 +64,7 @@ import { CountUp } from "@components/ui/CountUp.tsx";
         <CountUp client:visible initial={0} final={100} duration={1400} />%
       </p>
       <p
-        class="text-xs font-semibold tracking-widest text-green-600 uppercase dark:text-green-400"
+        class="text-xs font-semibold tracking-[0.2em] text-cyan-700 uppercase dark:text-cyan-400"
       >
         Satisfacción
       </p>
@@ -70,7 +78,7 @@ import { CountUp } from "@components/ui/CountUp.tsx";
         USA
       </p>
       <p
-        class="text-xs font-semibold tracking-widest text-green-600 uppercase dark:text-green-400"
+        class="text-xs font-semibold tracking-[0.2em] text-cyan-700 uppercase dark:text-cyan-400"
       >
         Estándares aplicados
       </p>

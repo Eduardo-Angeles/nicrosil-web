@@ -1,6 +1,6 @@
 ---
-import ProcessScrolled from "@components/ProcessScrolled.tsx";
-import type { Step, Effect } from "@components/ProcessScrolled.tsx";
+import ProcessScrolled from "@components/interactive/ProcessScrolled.tsx";
+import type { Step, Effect } from "@components/interactive/ProcessScrolled.tsx";
 
 // ── Cambia el efecto aquí ──────────────────────────────────────────────
 // "blink"  — aparece/desaparece con blur y contraste
@@ -11,6 +11,10 @@ const effect: Effect = "zoom";
 // ── Pasos del proceso ─────────────────────────────────────────────────
 // image: reemplaza con tus propias imágenes cuando estén listas
 // bgLight / bgDark: color de fondo de cada paso (light / dark mode)
+// colorLight / colorDark: acento tipográfico y de progreso para cada paso
+//
+// Scroll height formula: the component sets `height: ${steps.length * 40}vh`
+// so each step occupies 40vh of scroll distance before transitioning to the next.
 const steps: Step[] = [
   {
     number: "01",
@@ -59,4 +63,4 @@ const steps: Step[] = [
 ];
 ---
 
-<ProcessScrolled steps={steps} effect={effect} client:load />
+<ProcessScrolled steps={steps} effect={effect} client:visible />

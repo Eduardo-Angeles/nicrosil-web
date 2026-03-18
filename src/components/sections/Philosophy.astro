@@ -1,6 +1,6 @@
 ---
-import PhilosophyPillars from "@components/PhilosophyPillars.tsx";
-import type { Pillar } from "@components/PhilosophyPillars.tsx";
+import PhilosophyPillars from "@components/interactive/PhilosophyPillars.tsx";
+import type { Pillar } from "@components/interactive/PhilosophyPillars.tsx";
 
 const pillars: Pillar[] = [
   {
@@ -54,7 +54,7 @@ const pillars: Pillar[] = [
 
       <!-- Columna izquierda: cita editorial -->
       <div>
-        <p class="mb-6 text-sm font-semibold uppercase tracking-widest text-green-600 dark:text-green-400">
+        <p class="mb-6 text-xs font-semibold tracking-[0.2em] uppercase text-cyan-700 dark:text-cyan-400">
           Filosofía
         </p>
 
@@ -69,12 +69,10 @@ const pillars: Pillar[] = [
         <blockquote class="-mt-6">
           <p
             id="filosofia-heading"
-            class="font-display text-4xl font-bold leading-tight text-zinc-900 dark:text-zinc-50 sm:text-5xl"
+            class="font-display text-4xl font-extrabold tracking-tight leading-[1.05] text-zinc-900 sm:text-5xl dark:text-zinc-50"
           >
             Un proyecto no se termina,<br />
-            <span
-              class="bg-gradient-to-r from-green-500 to-cyan-500 bg-clip-text text-transparent dark:from-green-400 dark:to-cyan-400"
-            >
+            <span class="text-cyan-700 dark:text-cyan-400">
               se cultiva.
             </span>
           </p>
@@ -86,7 +84,7 @@ const pillars: Pillar[] = [
         </blockquote>
 
         <!-- Descripción -->
-        <p class="mt-8 max-w-md text-base leading-relaxed text-zinc-500 dark:text-zinc-400">
+        <p class="mt-8 max-w-md text-base leading-relaxed text-zinc-500 lg:text-lg dark:text-zinc-400">
           Un jardín que no se riega muere. Tu presencia digital funciona igual.
           La diferencia entre un sitio que crece y uno que queda obsoleto es la
           atención constante, no el lanzamiento inicial.

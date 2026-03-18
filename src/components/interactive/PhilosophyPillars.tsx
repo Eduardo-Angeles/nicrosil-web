@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from "preact/hooks";
+import { useState, useEffect } from "preact/hooks";
+import { useDarkMode } from "@hooks/useDarkMode";
 
 export type Pillar = {
   number: string;
@@ -11,20 +12,9 @@ export type Pillar = {
 
 export default function PhilosophyPillars({ pillars }: { pillars: Pillar[] }) {
   const [active, setActive] = useState(0);
-  const [isDark, setIsDark] = useState(false);
+  // useDarkMode subscribes to class changes on <html> via MutationObserver
+  const isDark = useDarkMode();
   const [paused, setPaused] = useState(false);
-
-  useEffect(() => {
-    const update = () =>
-      setIsDark(document.documentElement.classList.contains("dark"));
-    update();
-    const obs = new MutationObserver(update);
-    obs.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-    return () => obs.disconnect();
-  }, []);
 
   useEffect(() => {
     if (paused) return;
@@ -137,7 +127,7 @@ export default function PhilosophyPillars({ pillars }: { pillars: Pillar[] }) {
                 <div
                   class="overflow-hidden transition-all duration-500"
                   style={{
-                    maxHeight: isActive ? "8rem" : "0px",
+                    maxHeight: isActive ? "16rem" : "0px",
                     opacity: isActive ? 1 : 0,
                     marginTop: isActive ? "0.375rem" : "0px",
                   }}

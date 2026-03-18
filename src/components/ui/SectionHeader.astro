@@ -1,0 +1,56 @@
+---
+/**
+ * SectionHeader — shared eyebrow + heading + description pattern.
+ *
+ * Used at the top of every content section. Keeps typography tokens
+ * consistent across the page without copy-pasting classes.
+ *
+ * Props:
+ *   eyebrow   — small uppercase label above the title (e.g. "Servicios")
+ *   id        — id placed on the <h2> for aria-labelledby links
+ *   description — optional subtitle paragraph below the heading
+ *   centered  — centers all text (default: true)
+ *   class     — extra classes on the wrapper div
+ *   eyebrowStyle — optional inline style string for the eyebrow <p> (e.g. CSS vars)
+ */
+interface Props {
+  eyebrow: string;
+  id?: string;
+  description?: string;
+  centered?: boolean;
+  class?: string;
+  eyebrowStyle?: string;
+}
+
+const {
+  eyebrow,
+  id,
+  description,
+  centered = true,
+  class: className = "",
+  eyebrowStyle,
+} = Astro.props;
+---
+
+<div class={`mb-14 ${centered ? "text-center" : ""} ${className}`}>
+  <p
+    class="mb-3 text-xs font-semibold tracking-[0.2em] uppercase text-cyan-700 dark:text-cyan-400"
+    style={eyebrowStyle}
+  >
+    {eyebrow}
+  </p>
+
+  <h2
+    id={id}
+    class="mb-4 font-display text-4xl font-extrabold tracking-tight leading-[1.05] text-zinc-900 md:text-5xl dark:text-zinc-50"
+  >
+    <!-- Title content is passed via the default slot to allow gradient spans, <br>, etc. -->
+    <slot />
+  </h2>
+
+  {description && (
+    <p class="mx-auto max-w-xl text-base leading-relaxed text-zinc-500 lg:text-lg dark:text-zinc-400">
+      {description}
+    </p>
+  )}
+</div>

@@ -1,12 +1,6 @@
 ---
+import { navLinks } from "../../data/navigation.ts";
 const year = new Date().getFullYear();
-
-const links = [
-  { href: "#servicios", label: "Servicios" },
-  { href: "#filosofia", label: "Filosofía" },
-  { href: "#proceso", label: "Proceso" },
-  { href: "#contacto", label: "Contacto" },
-];
 ---
 
 <footer class="border-t border-[#152119] bg-[#040807] py-10">
@@ -29,7 +23,7 @@ const links = [
     <nav aria-label="Pie de página">
       <ul class="flex flex-wrap justify-center gap-6" role="list">
         {
-          links.map(({ href, label }) => (
+          navLinks.map(({ href, label }) => (
             <li>
               <a
                 href={href}

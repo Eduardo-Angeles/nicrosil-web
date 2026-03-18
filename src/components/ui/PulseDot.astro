@@ -1,0 +1,27 @@
+---
+/**
+ * PulseDot — animated pulsing dot indicator.
+ *
+ * Used to signal live status (e.g. "Available", "Recent work").
+ * Renders the dot only — wrap it in a badge container as needed.
+ *
+ * Props:
+ *   color — "green" (default) or "cyan"
+ */
+interface Props {
+  color?: "green" | "cyan";
+}
+const { color = "green" } = Astro.props;
+
+const baseColor =
+  color === "cyan"
+    ? "bg-cyan-500 dark:bg-cyan-400"
+    : "bg-green-500 dark:bg-green-400";
+---
+
+<span class="relative flex h-2 w-2" aria-hidden="true">
+  <span
+    class={`absolute inline-flex h-full w-full animate-ping rounded-full opacity-75 ${baseColor}`}
+  ></span>
+  <span class={`relative inline-flex h-2 w-2 rounded-full ${baseColor}`}></span>
+</span>

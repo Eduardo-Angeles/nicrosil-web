@@ -1,12 +1,6 @@
 ---
-import ThemeToggle from "./ThemeToggle.tsx";
-
-const navLinks = [
-  { href: "#servicios", label: "Servicios" },
-  { href: "#filosofia", label: "Filosofía" },
-  { href: "#proceso", label: "Proceso" },
-  { href: "#contacto", label: "Contacto" },
-];
+import ThemeToggle from "@components/interactive/ThemeToggle.tsx";
+import { navLinks } from "../../data/navigation.ts";
 ---
 
 <!-- El header es solo el contenedor sticky; el pill nav es el elemento visual -->
@@ -70,9 +64,10 @@ const navLinks = [
 
       <a
         href="#contacto"
-        class="hidden rounded-full bg-cyan-600 px-5 py-2 text-xs font-semibold text-white transition-colors hover:bg-cyan-500 md:inline-flex dark:bg-cyan-500 dark:hover:bg-cyan-400"
+        class="group relative hidden overflow-hidden rounded-full bg-gradient-to-r from-cyan-600 to-cyan-500 px-5 py-2 text-xs font-semibold text-white shadow-md shadow-cyan-500/25 transition-all hover:brightness-110 hover:shadow-cyan-500/40 md:inline-flex dark:from-cyan-500 dark:to-cyan-400"
       >
-        Hablemos
+        <span aria-hidden="true" class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full"></span>
+        <span class="relative">Cotización gratuita</span>
       </a>
 
       <!-- Hamburger mobile -->
@@ -142,9 +137,9 @@ const navLinks = [
       <li class="mt-2">
         <a
           href="#contacto"
-          class="mobile-nav-link block rounded-xl bg-cyan-600 px-4 py-2.5 text-center text-sm font-semibold text-white transition-colors hover:bg-cyan-500"
+          class="mobile-nav-link group relative block overflow-hidden rounded-xl bg-gradient-to-r from-cyan-600 to-cyan-500 px-4 py-2.5 text-center text-sm font-semibold text-white shadow-md shadow-cyan-500/25 transition-all hover:brightness-110"
         >
-          Hablemos
+          Cotización gratuita
         </a>
       </li>
     </ul>
