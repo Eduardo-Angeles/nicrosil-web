@@ -51,9 +51,9 @@ import { CountUp } from "@components/ui/CountUp.tsx";
     <!-- 100% satisfacción -->
     <div class="flex flex-col items-center gap-1.5 text-center" role="listitem">
       <p
-        class="font-display text-3xl font-bold text-zinc-800 md:text-4xl dark:text-zinc-50"
+        class="font-display text-3xl font-bold text-zinc-800 tabular-nums md:text-4xl dark:text-zinc-50"
       >
-        100%
+        <CountUp client:visible initial={0} final={100} duration={1400} />%
       </p>
       <p
         class="text-xs font-semibold tracking-widest text-green-600 uppercase dark:text-green-400"

@@ -46,7 +46,7 @@ export default function ThemeToggle() {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       aria-label={dark ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
-      class="relative flex h-9 w-9 items-center justify-center rounded-lg text-zinc-500 transition-[colors,box-shadow] duration-300 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
+      class="relative flex h-9 w-9 items-center justify-center rounded-lg text-zinc-500 transition-[colors,box-shadow] duration-300 hover:bg-zinc-100 hover:text-zinc-900 focus:outline-none active:brightness-100 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
       style={
         hovered || introGlow
           ? { boxShadow: `0 0 14px 3px ${glowColor}` }
