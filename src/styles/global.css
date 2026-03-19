@@ -105,11 +105,40 @@ body {
   transition: --hero-bg-start-dark 0.9s ease;
 }
 
+/* ─── Process: panel (background por step, CSS-driven para dark mode) ── */
+.process-panel {
+  background-color: var(--step-bg);
+}
+.dark .process-panel {
+  background-color: var(--step-bg-dark);
+}
+
+/* ─── Process: accent color (títulos, etiquetas) ─────────────────────── */
+.process-accent {
+  color: var(--step-color);
+  transition: color 0.4s ease;
+}
+.dark .process-accent {
+  color: var(--step-color-dark);
+}
+
+/* ─── Process: barra activa y dot activo ────────────────────────────── */
+.process-active-bar {
+  background-color: var(--active-color-l);
+  transition: background-color 0.4s ease;
+}
+.dark .process-active-bar {
+  background-color: var(--active-color-d);
+}
+
 /* ─── Process: palabras destacadas en descripción ───────────────────── */
 .process-desc em {
   color: var(--step-color);
   font-style: normal;
   font-weight: 600;
+}
+.dark .process-desc em {
+  color: var(--step-color-dark);
 }
 
 /* ─── Animaciones de entrada ─────────────────────────────────────────── */

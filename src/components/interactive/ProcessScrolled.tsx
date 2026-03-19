@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "preact/hooks";
-import { useDarkMode } from "@hooks/useDarkMode";
 
 export type Step = {
   number: string;
@@ -29,7 +28,7 @@ type StepState = "active" | "past" | "future";
 function getStyle(state: StepState, effect: Effect): Record<string, string> {
   const dur = "0.7s";
   const ease = "cubic-bezier(0.4,0,0.2,1)";
-  const base = `opacity ${dur} ${ease}, transform ${dur} ${ease}, filter ${dur} ${ease}, background-color 0.4s ease`;
+  const base = `opacity ${dur} ${ease}, transform ${dur} ${ease}, filter ${dur} ${ease}`;
 
   if (state === "active") {
     const t = `${base}, visibility 0s linear 0s`;
@@ -92,36 +91,58 @@ export default function ProcessScrolled({
   effect?: Effect;
 }) {
   const [active, setActive] = useState(0);
-  const [stepProgress, setStepProgress] = useState(0);
-  // useDarkMode subscribes to class changes on <html> via MutationObserver
-  const isDark = useDarkMode();
   const sectionRef = useRef<HTMLElement | null>(null);
+  const progressFillRef = useRef<HTMLDivElement | null>(null);
+  const rafRef = useRef<number | null>(null);
 
-  // Scroll tracker: calcula qué paso está activo y el progreso dentro del paso.
-  // Scroll height formula: the section height is steps.length * 40vh (set below).
-  // scrollRange = sectionHeight - viewportHeight = the total scrollable distance.
-  // p maps scrolled position to [0, 1) across the full section range.
-  // active = Math.floor(p * steps.length), stepProgress = fractional remainder.
+  // Update CSS vars on the section element when active step changes.
+  // These drive .process-active-bar (progress bar + active dot) via CSS.
   useEffect(() => {
-    function onScroll() {
+    const el = sectionRef.current;
+    if (!el) return;
+    const step = steps[active];
+    el.style.setProperty("--active-color-l", step.colorLight);
+    el.style.setProperty("--active-color-d", step.colorDark);
+  }, [active, steps]);
+
+  // Scroll tracker with rAF throttle.
+  // Progress bar width is updated via direct DOM manipulation to avoid
+  // re-renders on every scroll position; setActive only fires on step change.
+  useEffect(() => {
+    function compute() {
       const el = sectionRef.current;
       if (!el) return;
       const scrollRange = el.offsetHeight - window.innerHeight;
       if (scrollRange <= 0) return;
       const scrolled = -el.getBoundingClientRect().top;
       const p = Math.max(0, Math.min(0.9999, scrolled / scrollRange));
-      setActive(Math.floor(p * steps.length));
-      setStepProgress((p * steps.length) % 1);
+      const newActive = Math.floor(p * steps.length);
+      const stepProgress = (p * steps.length) % 1;
+      const overallProgress = ((newActive + stepProgress) / steps.length) * 100;
+
+      if (progressFillRef.current) {
+        progressFillRef.current.style.width = `${overallProgress}%`;
+      }
+
+      setActive((prev) => (prev !== newActive ? newActive : prev));
     }
+
+    function onScroll() {
+      if (rafRef.current !== null) return;
+      rafRef.current = requestAnimationFrame(() => {
+        rafRef.current = null;
+        compute();
+      });
+    }
+
     window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
+    compute();
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+    };
   }, [steps.length]);
 
-  const accentColor = isDark
-    ? steps[active].colorDark
-    : steps[active].colorLight;
-  const overallProgress = ((active + stepProgress) / steps.length) * 100;
   const total = String(steps.length).padStart(2, "0");
 
   return (
@@ -141,12 +162,9 @@ export default function ProcessScrolled({
         {/* Barra de progreso superior */}
         <div class="absolute top-0 right-0 left-0 z-50 h-[3px] bg-black/[0.06] dark:bg-white/[0.06]">
           <div
-            class="h-full"
-            style={{
-              width: `${overallProgress}%`,
-              backgroundColor: accentColor,
-              transition: "width 150ms ease-out, background-color 0.4s ease",
-            }}
+            ref={progressFillRef}
+            class="process-active-bar h-full"
+            style={{ width: "0%" }}
           />
         </div>
 
@@ -157,11 +175,14 @@ export default function ProcessScrolled({
           return (
             <div
               key={step.number}
-              class="absolute inset-0"
+              class="process-panel absolute inset-0"
               style={{
-                backgroundColor: isDark ? step.bgDark : step.bgLight,
+                "--step-bg": step.bgLight,
+                "--step-bg-dark": step.bgDark,
+                "--step-color": step.colorLight,
+                "--step-color-dark": step.colorDark,
                 ...getStyle(state, effect),
-              }}
+              } as any}
             >
               {/* Número decorativo de fondo */}
               <div
@@ -174,10 +195,7 @@ export default function ProcessScrolled({
 
               {/* Contador de paso — solo mobile */}
               <div class="absolute top-6 right-6 z-10 md:hidden">
-                <span
-                  class="text-xs font-bold tracking-widest tabular-nums opacity-50"
-                  style={{ color: isDark ? step.colorDark : step.colorLight, transition: "color 0.4s ease" }}
-                >
+                <span class="process-accent text-xs font-bold tracking-widest tabular-nums opacity-50">
                   {step.number} / {total}
                 </span>
               </div>
@@ -186,33 +204,14 @@ export default function ProcessScrolled({
               <div class="relative flex h-full items-center px-6">
                 <div class="relative mx-auto flex w-full max-w-6xl items-center">
                   <div class="z-10 max-w-lg">
-                    <p
-                      class="mb-6 text-xs font-semibold tracking-[0.2em] uppercase"
-                      style={{
-                        color: isDark ? step.colorDark : step.colorLight,
-                        transition: "color 0.4s ease",
-                      }}
-                    >
+                    <p class="process-accent mb-6 text-xs font-semibold tracking-[0.2em] uppercase">
                       Proceso &middot; {step.number}
                     </p>
-                    <h3
-                      class="font-display mb-5 text-5xl leading-[1.05] font-extrabold tracking-tight md:text-6xl"
-                      style={{
-                        color: isDark ? step.colorDark : step.colorLight,
-                        transition: "color 0.4s ease",
-                      }}
-                    >
+                    <h3 class="process-accent font-display mb-5 text-5xl leading-[1.05] font-extrabold tracking-tight md:text-6xl">
                       {step.title}
                     </h3>
                     <p
                       class="process-desc max-w-sm text-base leading-relaxed text-zinc-600 lg:text-lg dark:text-zinc-400"
-                      style={
-                        {
-                          "--step-color": isDark
-                            ? step.colorDark
-                            : step.colorLight,
-                        } as any
-                      }
                       dangerouslySetInnerHTML={{ __html: step.description }}
                     />
                   </div>
@@ -244,9 +243,8 @@ export default function ProcessScrolled({
           );
         })}
 
-        {/* Área inferior: navegación circular + dots */}
+        {/* Área inferior: dots de progreso */}
         <div class="absolute right-0 bottom-6 left-0 z-50 flex flex-col items-center gap-3">
-          {/* Dots de progreso */}
           <div class="flex justify-center gap-2">
             {steps.map((step, i) => (
               <div
@@ -256,19 +254,9 @@ export default function ProcessScrolled({
                 class={[
                   "h-1.5 rounded-full transition-all duration-500",
                   i === active
-                    ? "w-8"
+                    ? "process-active-bar w-8"
                     : "w-1.5 bg-zinc-400/40 dark:bg-white/20",
                 ].join(" ")}
-                style={
-                  i === active
-                    ? {
-                        backgroundColor: isDark
-                          ? steps[active].colorDark
-                          : steps[active].colorLight,
-                        transition: "background-color 0.4s ease",
-                      }
-                    : undefined
-                }
               />
             ))}
           </div>
