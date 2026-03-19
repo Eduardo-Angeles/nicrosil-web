@@ -41,7 +41,7 @@ export default function Contact() {
     const body = encodeURIComponent(
       `Nombre: ${form.name}\nTeléfono: ${form.phone}\n\n${form.message}`,
     );
-    window.location.href = `mailto:contacto@nicrosil.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:contacto@nicrosil.dev?subject=${subject}&body=${body}`;
 
     setTimeout(() => {
       setLoading(false);

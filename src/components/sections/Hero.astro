@@ -46,7 +46,7 @@ const slides = [
   >
     Tu Web,<br />
     <span
-      class="bg-gradient-to-r from-cyan-600 to-green-900 bg-clip-text text-transparent dark:from-cyan-300 dark:to-cyan-500"
+      class="bg-linear-to-r from-cyan-600 to-green-900 bg-clip-text text-transparent dark:from-cyan-300 dark:to-cyan-500"
     >
       Cultivada con Intención.
     </span>
@@ -67,9 +67,12 @@ const slides = [
     <!-- Primario -->
     <a
       href="#servicios"
-      class="group relative overflow-hidden rounded-xl bg-gradient-to-r from-cyan-600 to-cyan-500 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-cyan-500/30 transition-all hover:brightness-110 hover:shadow-cyan-500/50 dark:from-cyan-500 dark:to-cyan-400"
+      class="group relative overflow-hidden rounded-xl bg-linear-to-r from-cyan-600 to-cyan-500 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-cyan-500/30 transition-all hover:shadow-cyan-500/50 hover:brightness-110 dark:from-cyan-500 dark:to-cyan-400"
     >
-      <span aria-hidden="true" class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full"></span>
+      <span
+        aria-hidden="true"
+        class="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full"
+      ></span>
       <span class="relative flex items-center gap-2">
         Ver servicios
         <Arrow class="transition-transform group-hover:translate-x-0.5" />
@@ -82,7 +85,10 @@ const slides = [
     >
       <span class="flex items-center gap-2">
         Cotización gratuita
-        <Arrow size={14} class="transition-transform group-hover:translate-x-0.5" />
+        <Arrow
+          size={14}
+          class="transition-transform group-hover:translate-x-0.5"
+        />
       </span>
     </a>
   </div>
